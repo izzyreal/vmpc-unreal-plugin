@@ -1,0 +1,36 @@
+{
+  "FileVersion": 3,
+  "Version": 2,
+  "VersionName": "3.0.4",
+  "FriendlyName": "Vmpc Audio Component Plugin",
+  "Description": "Virtual Akai MPC2000XL",
+  "Category": "Other",
+  "CreatedBy": "izmar",
+  "CreatedByURL": "http://www.izmar.nl",
+  "DocsURL": "",
+  "MarketplaceURL": "",
+  "SupportURL": "",
+  "EngineVersion": "4.18.0",
+  "CanContainContent": true,
+  "Installed": true,
+  "Modules": [
+    {
+      "Name": "VmpcPlugin",
+      "Type": "Runtime",
+      "LoadingPhase": "Default",
+      "AdditionalDependencies": [
+        "AudioMixer"
+      ]
+    }
+  ],
+  "Plugins": [
+    {
+      "Name": "SoundUtilities",
+      "Enabled": true
+    },
+    {
+      "Name": "Synthesis",
+      "Enabled": true
+    }
+  ]
+}
