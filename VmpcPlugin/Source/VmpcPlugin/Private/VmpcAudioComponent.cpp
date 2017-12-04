@@ -45,6 +45,7 @@ void UVmpcAudioComponent::OnGenerateAudio(float* OutAudio, int32 NumSamples)
 
 void UVmpcAudioComponent::DataWheel(int increment) {
 	mpcInstance->getHardware().lock()->getDataWheel().lock()->turn(increment);
+
 }
 
 void UVmpcAudioComponent::Button(FString label) {
