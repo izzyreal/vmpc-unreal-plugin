@@ -56,7 +56,6 @@ namespace mpc {
 			int getCurrentParamIndex();
 			std::weak_ptr<mpc::lcdgui::Field> findBelow(std::weak_ptr<mpc::lcdgui::Field> tf);
 			std::weak_ptr<mpc::lcdgui::Field> findAbove(std::weak_ptr<mpc::lcdgui::Field> tf);
-			std::unique_ptr<mpc::lcdgui::Popup> popup{};
 
 		public:
 			std::string findBelow(std::string tf);
@@ -75,7 +74,11 @@ namespace mpc {
 			std::string currentScreenName{ "" };
 			std::string previousScreenName{ "" };
 
-		public:
+		private:
+			std::vector<std::weak_ptr<mpc::lcdgui::Component> > nonTextComps;
+
+		private:
+			std::shared_ptr<mpc::lcdgui::Popup> popup{};
 			std::shared_ptr<mpc::lcdgui::EnvGraph> envGraph{};
 			std::shared_ptr<mpc::lcdgui::TwoDots> twoDots{};
 			std::vector<std::shared_ptr<mpc::lcdgui::HorizontalBar>> horizontalBarsStepEditor{};
@@ -88,7 +91,6 @@ namespace mpc {
 			std::vector<std::shared_ptr<mpc::lcdgui::Knob>> knobs{};
 			std::shared_ptr<mpc::lcdgui::Wave> fineWave{};
 			std::shared_ptr<mpc::lcdgui::Wave> wave{};
-			mpc::lcdgui::Background* currentBackground{ nullptr };
 
 		private:
 			int previousLayer{ 0 };
@@ -126,11 +128,11 @@ namespace mpc {
 			std::vector<std::weak_ptr<mpc::lcdgui::Knob>> getKnobs();
 			std::vector<std::weak_ptr<mpc::lcdgui::MixerKnobBackground>> getMixerKnobBackgrounds();
 			std::vector<std::weak_ptr<mpc::lcdgui::MixerFaderBackground>> getMixerFaderBackgrounds();
-			void drawFunctionKeyses(std::string screenName);
-			mpc::lcdgui::Underline* getUnderline();
-			mpc::lcdgui::TwoDots* getTwoDots();
-			mpc::lcdgui::Wave* getFineWave();
-			mpc::lcdgui::Wave* getWave();
+			void drawFunctionKeys(std::string screenName);
+			std::weak_ptr<mpc::lcdgui::Underline> getUnderline();
+			std::weak_ptr<mpc::lcdgui::TwoDots> getTwoDots();
+			std::weak_ptr<mpc::lcdgui::Wave> getFineWave();
+			std::weak_ptr<mpc::lcdgui::Wave> getWave();
 
 		public:
 			std::vector<std::vector<bool> >* getPixels();

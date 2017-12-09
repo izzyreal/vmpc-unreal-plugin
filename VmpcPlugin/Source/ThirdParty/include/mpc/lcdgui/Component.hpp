@@ -1,7 +1,7 @@
 #ifndef COMPONENT
 #define COMPONENT
 
-//#include <gui/BasicStructs.hpp>
+#include <gui/BasicStructs.hpp>
 
 #include <vector>
 
@@ -9,25 +9,29 @@ namespace mpc {
 	namespace lcdgui {
 		class Component {
 
-		private:
-			//IRECT rect;
+		protected:
+			MRECT rect;
+			std::vector<MRECT> clearRects;
 			bool hidden{ false };
 
 		protected:
 			bool dirty{ false };
 
 		public:
-			void Hide(bool b) { if (hidden != b) { hidden = b; SetDirty(); } }
-			void SetDirty() { dirty = true; }
+			virtual void Hide(bool b);
+			void SetDirty();
 
-			bool IsHidden() { return hidden; }
-			bool IsDirty() { return dirty; }
+			bool IsHidden();
+			bool IsDirty();
+			bool NeedsClearing();
 
 		public:
 			virtual void Draw(std::vector<std::vector<bool> >* pixels) {}
+			virtual void Clear(std::vector<std::vector<bool> >* pixels);
 
-			//IRECT* GetRECT() { return &rect; }
+			MRECT* GetRECT();
 
+		public:
 			virtual ~Component() {}
 
 		};

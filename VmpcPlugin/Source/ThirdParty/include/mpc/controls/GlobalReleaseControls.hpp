@@ -32,7 +32,8 @@ namespace mpc {
 
 		public:
 			//void keyEvent(unsigned char c);
-			void pad(int i, int velo, bool repeat, int tick) override;
+			//void pad(int i, int velo, bool repeat, int tick) override;
+			void pad(int i);
 
 		private:
 			void generateNoteOff(int nn);
@@ -43,6 +44,7 @@ namespace mpc {
 			void tap() override;
 			void shift() override;
 			void erase() override;
+			void function(int i) override;
 
 		public:
 			// Not implemented, in case a release is triggered. We don't want AbstractControls to start processing these.
@@ -50,7 +52,6 @@ namespace mpc {
 			void right() override {};
 			void up() override {};
 			void down() override {};
-			void function(int i) override {};
 			void openWindow() override {};
 			void numpad(int i) override {};
 			void pressEnter() override {};

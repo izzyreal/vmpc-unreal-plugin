@@ -26,16 +26,21 @@ namespace mpc {
 		private:
 			std::vector<std::shared_ptr<HwPad> > pads;
 			std::vector<std::shared_ptr<Button> > buttons;
-			std::vector<std::shared_ptr<Pot> > pots;
 			std::vector<std::shared_ptr<Led> > leds;
 
 			std::shared_ptr<DataWheel> dataWheel;
 			std::shared_ptr<Slider> slider;
+			std::shared_ptr<Pot> recPot;
+			std::shared_ptr<Pot> volPot;
 
 		public:
 			std::weak_ptr<HwPad> getPad(int index);
 			std::weak_ptr<Button> getButton(std::string label);
+			std::weak_ptr<Led> getLed(std::string label);
+			std::vector<std::shared_ptr<Led> > getLeds();
 			std::weak_ptr<DataWheel> getDataWheel();
+			std::weak_ptr<Pot> getRecPot();
+			std::weak_ptr<Pot> getVolPot();
 
 		public:
 			Hardware(mpc::Mpc* mpc);

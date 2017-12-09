@@ -107,6 +107,7 @@ namespace mpc {
 		public:
 			void init();
 			ctoot::audio::server::UnrealAudioServer* getUnrealAudioServer();
+			ctoot::audio::server::RtAudioServer* getRtAudioServer();
 
 		private:
 
@@ -132,6 +133,9 @@ namespace mpc {
 			ctoot::audio::server::NonRealTimeAudioServer* getOfflineServer();
 			std::weak_ptr<ctoot::audio::server::PluginAudioServer> getPluginAudioServer();
 			void setMasterLevel(int i);
+			int getMasterLevel();
+			void setRecordLevel(int i);
+			int getRecordLevel();
 			std::vector<std::string> getInputNames();
 			std::vector<std::string> getOutputNames();
 			std::weak_ptr<ctootextensions::MpcMultiMidiSynth> getMms();
@@ -170,7 +174,7 @@ namespace mpc {
 			int getDirectSoundOutputDevCount();
 
 		public:
-			void startTestMode();
+			void start(std::string mode);
 
 		public:
 			AudioMidiServices(Mpc* mpc);

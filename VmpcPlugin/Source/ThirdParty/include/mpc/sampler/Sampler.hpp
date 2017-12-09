@@ -35,6 +35,9 @@ namespace mpc {
 			, public virtual ctoot::audio::system::AudioDevice
 		{
 
+		private:
+			int inputLevel = 0;
+
 		protected:
 			std::vector<float>* monitorBufferL{ nullptr };
 			std::vector<float>* monitorBufferR{ nullptr };
@@ -79,13 +82,17 @@ namespace mpc {
 			mpc::Mpc* mpc{ nullptr };
 
 		public:
+			int getInputLevel();
+			void setInputLevel(int i);
+
+		public:
 			void work(int nFrames) override;
 			void setEnabled(bool b) override;
 
 		public:
 			void silenceRecordBuffer();
-			void finishVoices();
-			void init(mpc::Mpc* mpc);
+			void finishBasicVoice();
+			void init();
 			void playMetronome(mpc::sequencer::NoteEvent* event, int framePos);
 			void playPreviewSample(int start, int end, int loopTo, int overlapMode);
 			std::weak_ptr<Program> getProgram(int programNumber);
@@ -201,7 +208,7 @@ namespace mpc {
 
 
 		public:
-			Sampler();
+			Sampler(mpc::Mpc* mpc);
 			~Sampler();
 
 		private:

@@ -49,14 +49,6 @@ namespace mpc {
 		class AbstractControls
 		{
 		protected:
-			static bool shiftPressed;
-			static bool recPressed;
-			static bool overDubPressed;
-			static bool tapPressed;
-			static bool goToPressed;
-			static bool erasePressed;
-
-		protected:
 			std::string param{ "" };
 			std::string csn{ "" };
 

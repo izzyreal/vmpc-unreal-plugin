@@ -8,11 +8,12 @@ namespace mpc {
 			: public Component
 		{
 
-		private:
 		public:
-			//bool Draw(IGraphics* g1) override;
+			void Draw(std::vector<std::vector<bool> >* pixels) override;
 
-			MixerFaderBackground();
+		public:
+			MixerFaderBackground(MRECT rect);
+			~MixerFaderBackground();
 
 		};
 

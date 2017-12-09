@@ -16,7 +16,6 @@ namespace mpc {
 	namespace lcdgui {
 		class LayeredScreen;
 		class Layer
-			//: public IPanelControl
 		{
 
 		private:
@@ -48,6 +47,8 @@ namespace mpc {
 			std::vector<mpc::lcdgui::Info*> getInfos();
 			std::vector<std::weak_ptr<mpc::lcdgui::Component>> getAllFields();
 			std::vector<std::weak_ptr<mpc::lcdgui::Component>> getAllLabels();
+			std::vector<std::weak_ptr<mpc::lcdgui::Component>> getComponentsThatNeedClearing();
+			std::vector<std::weak_ptr<mpc::lcdgui::Component>> getAllLabelsAndFields();
 			void setFocus(std::string textFieldName);
 			std::string getFocus();
 			

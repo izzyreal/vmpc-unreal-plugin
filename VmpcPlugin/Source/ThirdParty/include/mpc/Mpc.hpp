@@ -83,7 +83,8 @@ namespace mpc {
 		std::shared_ptr<hardware::Hardware> hardware;
 
 	public:
-		void init();
+		void init(std::string mode);
+		void powerOn();
 		//void startMidi();
 
 	public:
@@ -108,6 +109,10 @@ namespace mpc {
 		void loadSound(bool replace);
 		void loadProgram();
 		void importLoadedProgram();
+
+	private:
+		void runLoadSoundThread(int size);
+		static void static_loadSound(void* this_p, int size);
 
 	public:
 		std::weak_ptr<mpc::disk::AbstractDisk> getDisk();
