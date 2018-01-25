@@ -12,47 +12,25 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 #include "VmpcPlugin.h"
-#include <Logger.hpp>
+//#include <Logger.hpp>
 #include <sequencer/Sequencer.hpp>
 #include <sequencer/Sequence.hpp>
-#include <disk/AbstractDisk.hpp>
-#include <file/all/AllLoader.hpp>
-#include <file/aps/ApsLoader.hpp>
 
-#include <thread>
 
 #define LOCTEXT_NAMESPACE "FVmpcPluginModule"
 
 void FVmpcPluginModule::StartupModule()
 {
-	moduru::Logger::l.log("StartupModule\n");
+//	moduru::Logger::l.log("StartupModule\n");
 	// This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
-
-	mpcInstance = std::make_shared<mpc::Mpc>();
-	mpcInstance->init("unreal");
-	auto sequencer = mpcInstance->getSequencer().lock();
-	auto sequence = sequencer->getActiveSequence().lock();
-
-	mpcInstance->getDisk().lock()->moveForward("TEST2");
-	mpcInstance->getDisk().lock()->initFiles();
-	mpc::disk::MpcFile* f = mpcInstance->getDisk().lock()->getFile("FRUTZLE.ALL");
-	auto allLoader = new mpc::file::all::AllLoader(mpcInstance.get(), f);
-	f = mpcInstance->getDisk().lock()->getFile("FRUTZLE.APS");
-	auto apsLoader = new mpc::file::aps::ApsLoader(mpcInstance.get(), f);
-	delete allLoader;
-	while (mpcInstance->getDisk().lock()->isBusy()) {
-		std::this_thread::sleep_for(std::chrono::milliseconds(10));
-	}
-	delete apsLoader;
-	sequencer->playFromStart();
 }
 
 void FVmpcPluginModule::ShutdownModule()
 {
-	moduru::Logger::l.log("ShutdownModule\n");
+	//moduru::Logger::l.log("ShutdownModule\n");
 	// This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
 	// we call this function before unloading the module.
-	mpcInstance.reset();
+	//mpcInstance.reset();
 }
 
 #undef LOCTEXT_NAMESPACE

@@ -7,8 +7,8 @@
 /IGNORE:4221
 /NODEFAULTLIB
 "C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.RTTI.h.obj"
-"C:\Users\Izmar\Documents\Unreal Projects\plugcomp1\Plugins\VmpcPlugin\Intermediate\Build\Win64\UE4Editor\Development\VmpcPlugin\Module.VmpcPlugin.cpp.obj"
-"C:\Users\Izmar\Documents\Unreal Projects\plugcomp1\Plugins\VmpcPlugin\Intermediate\Build\Win64\UE4Editor\Development\VmpcPlugin\Module.VmpcPlugin.gen.cpp.obj"
+"C:\Users\Izmar\Documents\Unreal Projects\vrmpc\Plugins\VmpcPlugin\Intermediate\Build\Win64\UE4Editor\Development\VmpcPlugin\Module.VmpcPlugin.cpp.obj"
+"C:\Users\Izmar\Documents\Unreal Projects\vrmpc\Plugins\VmpcPlugin\Intermediate\Build\Win64\UE4Editor\Development\VmpcPlugin\Module.VmpcPlugin.gen.cpp.obj"
 "C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\VmpcPlugin\PCLaunch.rc.res"
 "C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\ModuleVersionResource.rc.inl.res"
-/OUT:"C:\Users\Izmar\Documents\Unreal Projects\plugcomp1\Plugins\VmpcPlugin\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-VmpcPlugin.lib"
+/OUT:"C:\Users\Izmar\Documents\Unreal Projects\vrmpc\Plugins\VmpcPlugin\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-VmpcPlugin.lib"

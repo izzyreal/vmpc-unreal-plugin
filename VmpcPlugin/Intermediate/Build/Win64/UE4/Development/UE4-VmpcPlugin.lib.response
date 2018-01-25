@@ -1,0 +1,8 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+"C:\Users\Izmar\Documents\Unreal Projects\vrmpc\Plugins\VmpcPlugin\Intermediate\Build\Win64\UE4\Development\VmpcPlugin\Module.VmpcPlugin.cpp.obj"
+"C:\Users\Izmar\Documents\Unreal Projects\vrmpc\Plugins\VmpcPlugin\Intermediate\Build\Win64\UE4\Development\VmpcPlugin\Module.VmpcPlugin.gen.cpp.obj"
+"C:\Users\Izmar\Documents\Unreal Projects\vrmpc\Intermediate\Build\Win64\UE4\Development\VmpcPlugin\PCLaunch.rc.res"
+/OUT:"C:\Users\Izmar\Documents\Unreal Projects\vrmpc\Plugins\VmpcPlugin\Binaries\Win64\UE4-VmpcPlugin.lib"

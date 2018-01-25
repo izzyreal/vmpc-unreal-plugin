@@ -19,8 +19,8 @@ void EmptyLinkFunctionForGeneratedCodeVmpcPlugin_init() {}
 			static const UE4CodeGen_Private::FPackageParams PackageParams = {
 				"/Script/VmpcPlugin",
 				PKG_CompiledIn | 0x00000000,
-				0x0C690F51,
-				0xDC405B40,
+				0xF203ED8D,
+				0x095CCE66,
 				nullptr, 0,
 				METADATA_PARAMS(nullptr, 0)
 			};

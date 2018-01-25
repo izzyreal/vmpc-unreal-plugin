@@ -1,0 +1,9 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/LTCG
+"C:\Users\Izmar\Documents\Unreal Projects\vrmpc\Plugins\VmpcPlugin\Intermediate\Build\Win64\UE4\Shipping\VmpcPlugin\Module.VmpcPlugin.cpp.obj"
+"C:\Users\Izmar\Documents\Unreal Projects\vrmpc\Plugins\VmpcPlugin\Intermediate\Build\Win64\UE4\Shipping\VmpcPlugin\Module.VmpcPlugin.gen.cpp.obj"
+"C:\Users\Izmar\Documents\Unreal Projects\vrmpc\Intermediate\Build\Win64\UE4\Shipping\VmpcPlugin\PCLaunch.rc.res"
+/OUT:"C:\Users\Izmar\Documents\Unreal Projects\vrmpc\Plugins\VmpcPlugin\Binaries\Win64\UE4-VmpcPlugin-Win64-Shipping.lib"

@@ -45,9 +45,9 @@ namespace UnrealBuildTool.Rules
             if (isLibrarySupported)
             {
                 PublicIncludePaths.Add(Path.Combine(ModulePath, "Boost/include/boost-1_64"));
-                PublicIncludePaths.Add(Path.Combine(ModulePath, "include/moduru"));
-                PublicIncludePaths.Add(Path.Combine(ModulePath, "include/mpc"));
-                PublicIncludePaths.Add(Path.Combine(ModulePath, "include/ctoot"));
+                PublicIncludePaths.Add(Path.Combine(ModulePath, "include/moduru/src"));
+                PublicIncludePaths.Add(Path.Combine(ModulePath, "include/mpc/src"));
+                PublicIncludePaths.Add(Path.Combine(ModulePath, "include/ctoot/src"));
                 PublicIncludePaths.Add(Path.Combine(ModulePath, "include/rapidjson/include"));
 
                 // Not sure if needed

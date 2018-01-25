@@ -13,17 +13,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #include "Engine.h"
 #include "VmpcPlugin.h"
-#include "RunebergVR_Pawn.h"
-#include "RunebergVR_Grabber.h"
-#include "RunebergVR_SimpleGrabber.h"
-#include "RunebergVR_Movement.h"
-#include "RunebergVR_Teleporter.h"
-#include "RunebergVR_Climb.h"
-#include "RunebergVR_CustomGravity.h"
 #include "VmpcAudioComponent.h"
-#include "RunebergVR_Gestures_Database.h"
-#include "RunebergVR_Gestures.h"
-#include "RunebergVR_Gaze.h"
 #include "CoreUObject.h"
 
 // You should place include statements to your module's private header files here.  You only need to
