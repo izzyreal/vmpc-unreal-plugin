@@ -17,8 +17,8 @@ namespace ctoot {
 			{
 
 			private:
-				std::weak_ptr<MetaInfo> metaInfo{ };
-				ChannelFormat* channelFormat{ nullptr };
+				std::weak_ptr<MetaInfo> metaInfo;
+				std::weak_ptr<ChannelFormat> channelFormat;
 				bool realTime{ true };
 				std::string name{ "" };
 
@@ -33,24 +33,24 @@ namespace ctoot {
 				std::weak_ptr<MetaInfo> getMetaInfo();
 				bool isRealTime();
 				void setRealTime(bool realTime);
-			public:
-				ChannelFormat* guessFormat();
 
 			public:
-				ChannelFormat* getChannelFormat();
-				void setChannelFormat(ChannelFormat* format);
+				std::weak_ptr<ChannelFormat> guessFormat();
+
+			public:
+				std::weak_ptr<ChannelFormat> getChannelFormat();
+				void setChannelFormat(std::weak_ptr<ChannelFormat> format);
 				void monoToStereo();
-				void convertTo(ChannelFormat* format);
+				void convertTo(std::weak_ptr<ChannelFormat> format);
 				void swap(int a, int b);
 				float square();
 				bool encodeMidSide();
 				bool decodeMidSide();
-				void copyFrom(AudioBuffer* src, int nFrames);
+				void copyFrom(AudioBuffer* src);
 
+			public:
 				AudioBuffer(std::string name, int channelCount, int sampleCount, float sampleRate);
 				~AudioBuffer();
-			private:
-				friend class MetaInfo;
 
 			};
 

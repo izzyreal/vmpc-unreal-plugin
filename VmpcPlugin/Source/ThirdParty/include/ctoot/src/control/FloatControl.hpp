@@ -9,9 +9,6 @@ namespace ctoot {
 			: public LawControl
 		{
 
-		public:
-			typedef LawControl super;
-
 		private:
 			std::string minLabel{ "" };
 			std::string maxLabel{ "" };
@@ -26,8 +23,10 @@ namespace ctoot {
 			virtual std::string getMaxLabel();
 			std::string toString();
 
-			FloatControl(int id, std::string name, ControlLaw law, float precision, float initialValue) : FloatControl(id, name, law, precision, initialValue, "", "", "") {};
-			FloatControl(int id, std::string name, ControlLaw law, float precision, float initialValue, std::string minLabel, std::string midLabel, std::string maxLabel);
+		public:
+			FloatControl(int id, std::string name, std::weak_ptr<ControlLaw> law, float precision, float initialValue) 
+				: FloatControl(id, name, law, precision, initialValue, "", "", "") {};
+			FloatControl(int id, std::string name, std::weak_ptr<ControlLaw> law, float precision, float initialValue, std::string minLabel, std::string midLabel, std::string maxLabel);
 			virtual ~FloatControl();
 
 		};

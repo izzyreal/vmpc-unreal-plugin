@@ -11,15 +11,7 @@ namespace ctoot {
 		{
 
 		public:
-			typedef BooleanControl super;
-
-		public:
 			BypassControl(int id);
-
-		private:
-			friend class CompoundControl;
-			friend class ControlColumn;
-			friend class ControlRow;
 		};
 	}
 }

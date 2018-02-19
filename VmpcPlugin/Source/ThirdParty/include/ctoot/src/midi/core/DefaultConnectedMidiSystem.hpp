@@ -6,7 +6,7 @@ namespace ctoot {
 	namespace midi {
 		namespace core {
 
-			struct MidiPort;
+			class MidiPort;
 
 			class DefaultConnectedMidiSystem
 				: public DefaultMidiSystem

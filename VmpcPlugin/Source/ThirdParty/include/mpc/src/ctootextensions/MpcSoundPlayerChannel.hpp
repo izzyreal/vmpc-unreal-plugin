@@ -1,6 +1,8 @@
 #pragma once
 #include <synth/SynthChannel.hpp>
 
+#include <map>
+
 namespace ctoot {
 
 	namespace control {
@@ -46,6 +48,8 @@ namespace mpc {
 		{
 
 		private:
+			std::map<int, int> simultA;
+			std::map<int, int> simultB;
 			std::weak_ptr<MpcSoundPlayerControls> controls{};
 			std::weak_ptr<mpc::sampler::Sampler> sampler{};
 			std::weak_ptr<ctoot::audio::mixer::AudioMixer> mixer{};
@@ -74,7 +78,7 @@ namespace mpc {
 			void setReceivePgmChange(bool b);
 			bool receivesMidiVolume();
 			void setReceiveMidiVolume(bool b);
-			virtual void mpcNoteOn(int track, int note, int velo, int varType, int varValue, int frameOffset);
+			void mpcNoteOn(int track, int note, int velo, int varType, int varValue, int frameOffset, bool firstGeneration);
 
 		private:
 			void checkForMutes(mpc::sampler::NoteParameters* np);

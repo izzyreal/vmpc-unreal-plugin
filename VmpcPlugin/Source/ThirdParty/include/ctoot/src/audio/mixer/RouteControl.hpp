@@ -9,7 +9,7 @@ namespace ctoot {
 		namespace mixer {
 
 			class RouteControl
-				: public EnumControl
+				: public ctoot::control::EnumControl
 			{
 
 			private:

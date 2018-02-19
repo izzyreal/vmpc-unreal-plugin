@@ -1,14 +1,17 @@
 #pragma once
 #include <audio/core/AudioProcess.hpp>
 
+#include <memory>
+
 namespace ctoot {
 	namespace audio {
 		namespace mixer {
 
-			struct MixerInterconnection
+			class MixerInterconnection
 			{
-				virtual ctoot::audio::core::AudioProcess* getInputProcess() = 0;
-				virtual ctoot::audio::core::AudioProcess* getOutputProcess() = 0;
+			public:
+				virtual std::weak_ptr<ctoot::audio::core::AudioProcess> getInputProcess() = 0;
+				virtual std::weak_ptr<ctoot::audio::core::AudioProcess> getOutputProcess() = 0;
 
 			};
 

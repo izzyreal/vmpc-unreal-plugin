@@ -26,6 +26,7 @@ namespace ctoot {
 				std::vector<MidiOutput*> getMidiOutputs() override;
 				void close() override;
 
+			public:
 				DefaultMidiSystem();
 				~DefaultMidiSystem();
 			};

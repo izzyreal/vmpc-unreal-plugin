@@ -18,15 +18,10 @@ namespace ctoot {
 				float getRight() override;
 				void setValue(float value) override;
 
+			public:
 				BalanceControl();
 				virtual ~BalanceControl();
 
-			private:
-//				friend class MixControls;
-//				friend class MixControls_LCRControl;
-//				friend class MixControls_PanControl;
-//				friend class FrontRearControl;
-//				friend class MixControls_GainControl;
 			};
 	
 		}

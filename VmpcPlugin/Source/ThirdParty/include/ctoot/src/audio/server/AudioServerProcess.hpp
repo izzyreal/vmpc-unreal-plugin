@@ -22,11 +22,11 @@ namespace ctoot {
 			
 			protected:
 				//shared_ptr<ctoot::audio::core::MetaInfo> metaInfo{ nullptr };
-				ctoot::audio::core::ChannelFormat* format{ nullptr };
+				std::weak_ptr<ctoot::audio::core::ChannelFormat> format;
 
 			public:
 				std::string getName() override;
-				ctoot::audio::core::ChannelFormat* getChannelFormat();
+				std::weak_ptr<ctoot::audio::core::ChannelFormat> getChannelFormat();
 
 				virtual void open() = 0;
 				virtual void close() = 0;

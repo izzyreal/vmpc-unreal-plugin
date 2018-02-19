@@ -67,7 +67,7 @@ namespace ctoot {
 				void resizeBuffers(int newSize) override;
 
 			public:
-				void work(int nFrames) override; // override AudioClient::work()
+				void work(int nFrames) override;
 
 			public:
 				NonRealTimeAudioServer(std::weak_ptr<AudioServer> server);

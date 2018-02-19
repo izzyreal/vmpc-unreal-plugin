@@ -42,7 +42,7 @@ namespace mpc {
 
 		public:
 			void handle(std::weak_ptr<mpc::sequencer::Event> event, mpc::sequencer::Track* track);
-			void handleNoThru(std::weak_ptr<mpc::sequencer::Event> event, mpc::sequencer::Track* track);
+			void handleNoThru(std::weak_ptr<mpc::sequencer::Event> event, mpc::sequencer::Track* track, int timeStamp);
 
 		private:
 			void midiOut(std::weak_ptr<mpc::sequencer::Event> event, mpc::sequencer::Track* track);

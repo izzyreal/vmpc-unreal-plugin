@@ -2,19 +2,14 @@
 #include <control/AbstractLaw.hpp>
 #include <string>
 
+#include <memory>
+
 namespace ctoot {
 	namespace control {
-
 
 		class LinearLaw
 			: public AbstractLaw
 		{
-
-		public:
-			typedef AbstractLaw super;
-
-		private:
-			static LinearLaw* UNITY_;
 
 		public:
 			int intValue(float v) override;
@@ -22,9 +17,8 @@ namespace ctoot {
 
 			LinearLaw(float min, float max, std::string units);
 
-
 		public:
-			static LinearLaw*& UNITY();
+			static std::weak_ptr<LinearLaw> UNITY();
 
 		};
 	}

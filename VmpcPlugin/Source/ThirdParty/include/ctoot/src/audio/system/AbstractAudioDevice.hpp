@@ -10,23 +10,23 @@ namespace ctoot {
 			{
 
 			public:
-				std::vector<AudioInput*> inputs{};
-				std::vector<AudioOutput*> outputs{};
+				std::vector<std::shared_ptr<AudioInput>> inputs{};
+				std::vector<std::shared_ptr<AudioOutput>> outputs{};
 
 			private:
 				std::string name{ "" };
 
 			public:
-				std::vector<AudioInput*> getAudioInputs() override;
-				std::vector<AudioOutput*> getAudioOutputs() override;
+				std::vector<std::weak_ptr<AudioInput>> getAudioInputs() override;
+				std::vector<std::weak_ptr<AudioOutput>> getAudioOutputs() override;
 				std::string getName() override;
 				std::string toString();
 
 			public:
-				virtual void addAudioInput(AudioInput* input);
-				virtual void removeAudioInput(AudioInput* input);
-				virtual void addAudioOutput(AudioOutput* output);
-				virtual void removeAudioOutput(AudioOutput* output);
+				virtual void addAudioInput(std::shared_ptr<AudioInput> input);
+				virtual void removeAudioInput(std::weak_ptr<AudioInput> input);
+				virtual void addAudioOutput(std::shared_ptr<AudioOutput> output);
+				virtual void removeAudioOutput(std::weak_ptr<AudioOutput> output);
 
 			public:
 				AbstractAudioDevice(std::string name);

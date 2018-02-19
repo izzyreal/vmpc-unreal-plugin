@@ -25,21 +25,15 @@ namespace ctoot {
 			public:
 				virtual float getFront();
 				virtual float getRear();
+
+			public:
 				void setValue(float value) override;
-				std::vector<std::string>* getPresetNames() override;
+				std::vector<std::string> getPresetNames() override;
 				void applyPreset(std::string presetName) override;
 
+			public:
 				FrontRearControl();
 
-			private:
-				static std::vector<std::string>& presetNames();
-				/*
-				friend class MixControls;
-				friend class MixControls_LCRControl;
-				friend class MixControls_PanControl;
-				friend class MixControls_BalanceControl;
-				friend class MixControls_GainControl;
-				*/
 			};
 
 		}

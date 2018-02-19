@@ -32,22 +32,30 @@ namespace mpc {
 		private:
 			static float LOG_0_01_;
 
+		private:
+			static std::weak_ptr<ctoot::control::ControlLaw> ATTACK_LAW();
+			static std::weak_ptr<ctoot::control::ControlLaw> HOLD_LAW();
+			static std::weak_ptr<ctoot::control::ControlLaw> DECAY_LAW();
+
 		public:
 			float deriveTimeFactor(float milliseconds);
 			float deriveAttack();
 			float deriveDecay();
-			ctoot::control::FloatControl* createAttackControl(float min, float max, float init_);
-			ctoot::control::FloatControl* createHoldControl(float min, float max, float init_);
-			ctoot::control::FloatControl* createDecayControl(float min, float max, float init_);
+			ctoot::control::FloatControl* createAttackControl(float init);
+			ctoot::control::FloatControl* createHoldControl(float init);
+			ctoot::control::FloatControl* createDecayControl(float init);
 
 		public:
 			float getAttackCoeff();
 			float getHold();
 			float getDecayCoeff();
 
+		public:
 			MpcEnvelopeControls(int id, int instanceIndex, std::string name, int idOffset, float timeMultiplier);
-			MpcEnvelopeControls(int instanceIndex, std::string name, int idOffset, float timeMultiplier) : MpcEnvelopeControls(MPC_ENVELOPE_ID, instanceIndex, name, idOffset, timeMultiplier) {};
-			MpcEnvelopeControls(int instanceIndex, std::string name, int idOffset) : MpcEnvelopeControls(instanceIndex, name, idOffset, 1.0f) {};
+			MpcEnvelopeControls(int instanceIndex, std::string name, int idOffset, float timeMultiplier) 
+				: MpcEnvelopeControls(MPC_ENVELOPE_ID, instanceIndex, name, idOffset, timeMultiplier) {};
+			MpcEnvelopeControls(int instanceIndex, std::string name, int idOffset) 
+				: MpcEnvelopeControls(instanceIndex, name, idOffset, 1.0f) {};
 			
 			~MpcEnvelopeControls();
 

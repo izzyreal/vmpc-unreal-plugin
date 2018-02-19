@@ -1,7 +1,9 @@
 #pragma once
-#include <cstdint>
 #include <control/LawControl.hpp>
 #include <control/ControlLaw.hpp>
+
+#include <cstdint>
+#include <memory>
 
 namespace ctoot {
 	namespace audio {
@@ -13,17 +15,21 @@ namespace ctoot {
 				: public ctoot::control::LawControl
 			{
 
-			public:
+			protected:
 				float gain{ 0 };
 
 			public:
 				float getGain();
-				static FaderLaw* SEMI_LOG();
-				static FaderLaw* LOG();
-				static FaderLaw* BROADCAST();
+
+			public:
+				static std::weak_ptr<FaderLaw> SEMI_LOG();
+				static std::weak_ptr<FaderLaw> LOG();
+				static std::weak_ptr<FaderLaw> BROADCAST();
 				static float ATTENUATION_CUTOFF();
-				static FaderLaw* defaultLaw();
-				FaderControl(int id, ctoot::control::ControlLaw law, float initialValue);
+				static std::weak_ptr<FaderLaw> defaultLaw();
+
+			public:
+				FaderControl(int id, std::weak_ptr<ctoot::control::ControlLaw> law, float initialValue);
 				virtual ~FaderControl();
 
 			};

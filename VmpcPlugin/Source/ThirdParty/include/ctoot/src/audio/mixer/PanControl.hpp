@@ -13,9 +13,6 @@ namespace ctoot {
 				  : public LCRControl
 			{
 
-			public:
-				typedef LCRControl super;
-
 			private:
 				float left{};
 				float right{};
@@ -25,13 +22,8 @@ namespace ctoot {
 				float getRight() override;
 				void setValue(float value) override;
 
+			public:
 				PanControl();
-
-//				friend class MixControls;
-//				friend class LCRControl;
-//				friend class BalanceControl;
-//				friend class FrontRearControl;
-//				friend class GainControl;
 			};
 
 		}

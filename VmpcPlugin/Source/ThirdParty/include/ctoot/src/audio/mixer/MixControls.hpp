@@ -16,22 +16,27 @@ namespace ctoot {
 			class FrontRearControl;
 
 			class MixControls
-            : public virtual MixVariables, public ctoot::audio::core::AudioControls
+            : public virtual MixVariables
+			, public ctoot::audio::core::AudioControls
 
 			{
 
 			private:
 				static float HALF_ROOT_TWO_;
-				std::shared_ptr<BooleanControl> soloControl{ nullptr };
-				std::shared_ptr<BooleanControl> muteControl{ nullptr };
+
+			private:
+				std::shared_ptr<ctoot::control::BooleanControl> soloControl{ nullptr };
+				std::shared_ptr<ctoot::control::BooleanControl> muteControl{ nullptr };
 				std::shared_ptr<ctoot::audio::fader::FaderControl> gainControl{ nullptr };
 				std::shared_ptr<LCRControl> lcrControl { nullptr } ;
 				std::shared_ptr<FrontRearControl> frontRearControl{ nullptr };
 				std::weak_ptr<BusControls> busControls{ };
 
+			protected:
+				MixerControls* mixerControls{ nullptr };
+				
 			public:
-				std::shared_ptr<MixerControls> mixerControls{ nullptr };
-				std::weak_ptr<MixerControls> wMixerControls{};
+				MixerControls* getMixerControls();
 
 			private:
 				bool  master { false };
@@ -43,10 +48,12 @@ namespace ctoot {
 				void derive(Control* c) override;
 
 			public:
-				virtual BooleanControl* getSoloControl();
-				virtual BooleanControl* getMuteControl();
+				virtual ctoot::control::BooleanControl* getSoloControl();
+				virtual ctoot::control::BooleanControl* getMuteControl();
+
+			public:
 				bool isMaster() override;
-                ctoot::audio::core::ChannelFormat* getChannelFormat() override;
+                std::weak_ptr<ctoot::audio::core::ChannelFormat> getChannelFormat() override;
 				bool canBypass() override;
 				bool isAlwaysVertical() override;
 				bool canBeDeleted() override;
@@ -60,24 +67,19 @@ namespace ctoot {
 				float getSmoothingFactor() override;
 
 			public:
-				virtual EnumControl* createRouteControl(int stripId);
-				virtual BooleanControl* createMuteControl();
-				virtual BooleanControl* createSoloControl();
+				virtual ctoot::control::EnumControl* createRouteControl(int stripId);
+				virtual ctoot::control::BooleanControl* createMuteControl();
+				virtual ctoot::control::BooleanControl* createSoloControl();
 
 			public:
-				MixControls(std::weak_ptr<MixerControls> mixerControls, int stripId, std::weak_ptr<BusControls> busControls, bool isMaster);
+				MixControls(MixerControls* mixerControls, int stripId, std::weak_ptr<BusControls> busControls, bool isMaster);
 				~MixControls();
 
 			public:
 				virtual std::string getName();
 
-			private:
+			public:
 				static float& HALF_ROOT_TWO();
-							friend class LCRControl;
-							friend class PanControl;
-				//			friend class BalanceControl;
-							friend class FrontRearControl;
-				friend class GainControl;
 			};
 		}
 	}

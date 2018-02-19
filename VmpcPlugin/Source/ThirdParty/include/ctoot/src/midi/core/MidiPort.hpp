@@ -7,9 +7,10 @@ namespace ctoot {
 		namespace core {
 
 
-			struct MidiPort
+			class MidiPort
 
 			{
+			public:
 				virtual std::string getName() = 0;
 
 			};

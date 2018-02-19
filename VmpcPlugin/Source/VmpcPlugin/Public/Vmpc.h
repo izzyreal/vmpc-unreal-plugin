@@ -5,18 +5,43 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "VmpcAudioComponent.h"
+#include "Runtime/Engine/Classes/Animation/AnimSequence.h"
+#include <Mpc.hpp>
+#include "DataWheelObserver.h"
 #include "Vmpc.generated.h"
 
 struct FUpdateTextureRegion2D;
+class ULcdComponent;
+class URotatingComponent;
+
 
 UCLASS()
+
 class VMPCPLUGIN_API AVmpc : public AActor
 {
 	GENERATED_BODY()
 
+private:
+	std::shared_ptr<DataWheelObserver> dataWheelObserver;
+
 public:
-	// Sets default values for this actor's properties
+	static const float ANGLE;
+
+public:
 	AVmpc();
+
+public:
+	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
+		ULcdComponent* Display;
+
+	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
+		URotatingComponent* DataWheelComponent;
+
+	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
+		URotatingComponent* RecGainComponent;
+
+	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
+		URotatingComponent* VolumeComponent;
 
 protected:
 	virtual void BeginPlay() override;
@@ -24,33 +49,31 @@ protected:
 
 private:
 	UVmpcAudioComponent* vmpcAudioComponent;
-	void addMesh(FString name);
+	UStaticMeshComponent* addMesh(FString name);
+	URotatingComponent* addRotatable(FString name);
+	void addDisplay();
 
-	// mesh component
-	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
-		UStaticMeshComponent* Display;
-	int offset;
-	int dtWidth;
-	int dtHeight;
-	int dtBytesPerPixel;
-	uint8 *dtBuffer;
-	int dtBufferSize;
-	int dtBufferSizeSqrt;
-	
-	UPROPERTY()
-		UMaterialInstanceDynamic* dtMaterialInstanceDynamic;
-
-	UPROPERTY()
-		UTexture2D* dtTexture;
-	
-	FUpdateTextureRegion2D* dtUpdateTextureRegion;
-
-	void CreateTexture(bool argForceMake);
-	
-public:
-	void UpdateTexture();
-	void UpdateTextureRegions(UTexture2D* Texture, int32 MipIndex, uint32 NumRegions, FUpdateTextureRegion2D* Regions, uint32 SrcPitch, uint32 SrcBpp, uint8* SrcData, bool bFreeData);
+public:	
 	virtual void OnConstruction(const FTransform& Transform) override;
 	virtual void Tick(float DeltaTime) override;
+
+public:
+	std::shared_ptr<mpc::Mpc> mpcInst;
+
+public:
+	UFUNCTION(BlueprintCallable, Category = "Vmpc|Synth|Components|Audio")
+		void DataWheelTurn(int increment);
+
+	UFUNCTION(BlueprintCallable, Category = "Vmpc|Synth|Components|Audio")
+		void ButtonPush(FString label);
+
+	UFUNCTION(BlueprintCallable, Category = "Vmpc|Synth|Components|Audio")
+		void ButtonRelease(FString label);
+
+	UFUNCTION(BlueprintCallable, Category = "Vmpc|Synth|Components|Audio")
+		void PadPush(int pad);
+
+	UFUNCTION(BlueprintCallable, Category = "Vmpc|Synth|Components|Audio")
+		void PadRelease(int pad);
 
 };

@@ -12,18 +12,16 @@ namespace mpc {
 		{
 
 		public:
-			typedef ctoot::audio::core::SimpleAudioProcess super;
-			int processAudio(ctoot::audio::core::AudioBuffer* buffer, int nFrames) override;
+			int processAudio(ctoot::audio::core::AudioBuffer* buffer) override;
 
+		private:
 			MpcMixerInterconnection* mmi{ nullptr };
 			ctoot::audio::core::AudioBuffer* sharedBuffer{ nullptr };
 
+		public:
 			InterconnectionInputProcess(MpcMixerInterconnection* mmi, ctoot::audio::core::AudioBuffer* sharedBuffer);
 			~InterconnectionInputProcess();
 
-		private:
-			//friend class MpcMixerInterconnection;
-			//friend class MpcMixerInterconnection_InterconnectionOutputProcess;
 		};
 	}
 }

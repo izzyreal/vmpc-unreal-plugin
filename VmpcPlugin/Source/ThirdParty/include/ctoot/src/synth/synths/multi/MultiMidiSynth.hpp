@@ -19,16 +19,11 @@ namespace ctoot {
 					ctoot::synth::synths::multi::MultiMidiSynthObserver* observer{ nullptr };
 
 				public:
-					typedef ctoot::synth::BasicMidiSynth super;
-
-				public:
 					void setChannel(int chan, std::shared_ptr<ctoot::synth::SynthChannel> synthChannel) override;
 
 				public:
 					MultiMidiSynth(std::shared_ptr<MultiSynthControls> controls);
 					~MultiMidiSynth();
-				private:
-					friend class MultiMidiSynthObserver;
 
 				};
 

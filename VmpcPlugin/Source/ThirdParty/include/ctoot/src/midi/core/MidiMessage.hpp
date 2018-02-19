@@ -13,6 +13,7 @@ namespace ctoot {
 			public:
 				std::vector<char> data{};
 				int length{};
+				int bufferPos = 0;
 
 			public:
 				virtual int getLength();

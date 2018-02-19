@@ -3,6 +3,8 @@
 #include <control/Control.hpp>
 #include <control/ControlLaw.hpp>
 
+#include <memory>
+
 namespace ctoot {
 	namespace control {
 
@@ -10,11 +12,8 @@ namespace ctoot {
 			: public Control
 		{
 
-		public:
-			typedef Control super;
-
 		private:
-			ControlLaw* law{ nullptr };
+			std::weak_ptr<ControlLaw> law;
 			float value{ 0 };
 			float precision{ 0 };
 
@@ -22,18 +21,20 @@ namespace ctoot {
 			virtual int calculateDecimalPlaces();
 
 		public:
-			virtual ControlLaw* getLaw();
+			virtual std::weak_ptr<ControlLaw> getLaw();
 			virtual float getValue();
-			std::string getValueString() override;
 			virtual void setValue(float value);
 			virtual float getPrecision();
-			void setIntValue(int value) override;
-			int getIntValue() override;
-			virtual std::vector<std::string>* getPresetNames();
+			virtual std::vector<std::string> getPresetNames();
 			virtual void applyPreset(std::string name);
 
 		public:
-			LawControl(int id, std::string name, ControlLaw law, float precision, float initialValue);
+			int getIntValue() override;
+			std::string getValueString() override;
+			void setIntValue(int value) override;
+
+		public:
+			LawControl(int id, std::string name, std::weak_ptr<ControlLaw> law, float precision, float initialValue);
 			virtual ~LawControl();
 
 		};

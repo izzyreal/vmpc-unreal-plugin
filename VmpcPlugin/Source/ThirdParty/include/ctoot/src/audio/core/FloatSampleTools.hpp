@@ -14,21 +14,21 @@ namespace ctoot {
 			{
 
 			public: 
-				static const int F_8 = { int32_t(1) };
-				static const int F_16 = { int32_t(2) };
-				static const int F_24 = { int32_t(3) };
-				static const int F_32 = { int32_t(4) };
-				static const int F_SAMPLE_WIDTH_MASK = { int32_t(7) };
-				static const int F_SIGNED = { int32_t(8) };
-				static const int F_BIGENDIAN = { int32_t(16) };
-				static const int CT_8S = { int32_t(9) };
-				static const int CT_8U = { int32_t(1) };
-				static const int CT_16SB = { int32_t(26) };
-				static const int CT_16SL = { int32_t(10) };
-				static const int CT_24SB = { int32_t(27) };
-				static const int CT_24SL = { int32_t(11) };
-				static const int CT_32SB = { int32_t(28) };
-				static const int CT_32SL = { int32_t(12) };
+				static const int F_8 = { int(1) };
+				static const int F_16 = { int(2) };
+				static const int F_24 = { int(3) };
+				static const int F_32 = { int(4) };
+				static const int F_SAMPLE_WIDTH_MASK = { int(7) };
+				static const int F_SIGNED = { int(8) };
+				static const int F_BIGENDIAN = { int(16) };
+				static const int CT_8S = { int(9) };
+				static const int CT_8U = { int(1) };
+				static const int CT_16SB = { int(26) };
+				static const int CT_16SL = { int(10) };
+				static const int CT_24SB = { int(27) };
+				static const int CT_24SL = { int(11) };
+				static const int CT_32SB = { int(28) };
+				static const int CT_32SL = { int(12) };
 
 			public: 
 				static void checkSupportedSampleSize(int ssib, int channels, int frameSize);

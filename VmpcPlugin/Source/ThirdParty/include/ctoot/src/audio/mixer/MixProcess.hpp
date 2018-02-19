@@ -12,11 +12,8 @@ namespace ctoot {
 				: public ctoot::audio::core::SimpleAudioProcess
 			{
 
-			public:
-				typedef SimpleAudioProcess super;
-
-			public:
-				MixVariables* vars{ nullptr };
+			protected:
+				std::weak_ptr<MixVariables> vars;
 				std::weak_ptr<AudioMixerStrip> routedStrip{ };
 
 			private:
@@ -29,9 +26,10 @@ namespace ctoot {
 				virtual AudioMixerStrip* getRoutedStrip();
 
 			public:
-				int processAudio(ctoot::audio::core::AudioBuffer* buffer, int nFrames) override;
+				int processAudio(ctoot::audio::core::AudioBuffer* buffer) override;
 
-				MixProcess(std::shared_ptr<AudioMixerStrip> strip, MixVariables* vars);
+			public:
+				MixProcess(std::weak_ptr<AudioMixerStrip> strip, std::weak_ptr<MixVariables> vars);
 				virtual ~MixProcess();
 
 			};

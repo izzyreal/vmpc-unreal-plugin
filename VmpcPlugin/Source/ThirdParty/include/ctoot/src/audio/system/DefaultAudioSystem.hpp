@@ -1,6 +1,8 @@
 #pragma once
 #include <audio/system/AudioSystem.hpp>
 
+#include <memory>
+
 namespace ctoot {
 	namespace audio {
 		namespace system {
@@ -10,26 +12,27 @@ namespace ctoot {
 			{
 
 			protected:
-				std::vector<AudioDevice*> devices{};
+				std::vector<std::weak_ptr<AudioDevice>> devices{};
 				moduru::observer::Observer* observer{ nullptr };
 
 			public:
 				bool autoConnect{ false };
 
 			public:
-				void addAudioDevice(AudioDevice* device) override;
+				void addAudioDevice(std::weak_ptr<AudioDevice> device) override;
 
 			public:
-				virtual void checkUniqueDeviceName(AudioDevice* device);
+				virtual void checkUniqueDeviceName(std::weak_ptr<AudioDevice> device);
 
 			public:
-				void removeAudioDevice(AudioDevice* device) override;
-				std::vector<AudioDevice*> getAudioDevices() override;
-				std::vector<AudioInput*> getAudioInputs() override;
-				std::vector<AudioOutput*> getAudioOutputs() override;
+				void removeAudioDevice(std::weak_ptr<AudioDevice> device) override;
+				std::vector<std::weak_ptr<AudioDevice>> getAudioDevices() override;
+				std::vector<std::weak_ptr<AudioInput>> getAudioInputs() override;
+				std::vector<std::weak_ptr<AudioOutput>> getAudioOutputs() override;
 				void setAutoConnect(bool autoConnect) override;
 				void close() override;
 
+			public:
 				DefaultAudioSystem();
 				virtual ~DefaultAudioSystem();
 

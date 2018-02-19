@@ -66,28 +66,28 @@ namespace mpc {
 			bool bouncePrepared{ false };
 			bool bouncing{ false };
 
-			std::shared_ptr<ctoot::audio::core::AudioFormat> format{};
-			std::vector<std::shared_ptr<mpc::ctootextensions::Voice>> voices{};
-			std::shared_ptr<mpc::ctootextensions::Voice> basicVoice{};
-			std::vector<std::shared_ptr<ctoot::synth::SynthChannelControls>> synthChannelControls{};
-			std::shared_ptr<ctoot::audio::server::AudioServer> server{};
-			std::shared_ptr<ctoot::audio::server::NonRealTimeAudioServer> offlineServer{};
-			std::shared_ptr<ctoot::audio::system::DefaultAudioSystem> audioSystem{};
-			std::shared_ptr<ctoot::midi::core::DefaultConnectedMidiSystem> midiSystem{};
-			std::shared_ptr<ctoot::audio::mixer::AudioMixer> mixer{};
-			std::shared_ptr<ctoot::synth::SynthRackControls> synthRackControls{};
-			std::shared_ptr<ctoot::synth::SynthRack> synthRack{};
-			std::shared_ptr<ctootextensions::MpcMultiSynthControls> msc{};
-			std::shared_ptr<ctootextensions::MpcMixerControls> mixerControls{};
-			std::weak_ptr<ctootextensions::MpcMultiMidiSynth> mms{};
-			std::shared_ptr<ctoot::audio::server::CompoundAudioClient> cac{};
-			std::shared_ptr<MpcMidiPorts> mpcMidiPorts{};
+			std::shared_ptr<ctoot::audio::core::AudioFormat> format;
+			std::vector<std::shared_ptr<mpc::ctootextensions::Voice>> voices;
+			std::shared_ptr<mpc::ctootextensions::Voice> basicVoice;
+			std::vector<std::shared_ptr<ctoot::synth::SynthChannelControls>> synthChannelControls;
+			std::shared_ptr<ctoot::audio::server::AudioServer> server;
+			std::shared_ptr<ctoot::audio::server::NonRealTimeAudioServer> offlineServer;
+			std::shared_ptr<ctoot::audio::system::DefaultAudioSystem> audioSystem;
+			std::shared_ptr<ctoot::midi::core::DefaultConnectedMidiSystem> midiSystem;
+			std::shared_ptr<ctoot::audio::mixer::AudioMixer> mixer;
+			std::shared_ptr<ctoot::synth::SynthRackControls> synthRackControls;
+			std::shared_ptr<ctoot::synth::SynthRack> synthRack;
+			std::shared_ptr<ctootextensions::MpcMultiSynthControls> msc;
+			std::shared_ptr<ctootextensions::MpcMixerControls> mixerControls;
+			std::weak_ptr<ctootextensions::MpcMultiMidiSynth> mms;
+			std::shared_ptr<ctoot::audio::server::CompoundAudioClient> cac;
+			std::shared_ptr<MpcMidiPorts> mpcMidiPorts;
 			Mpc* mpc{ nullptr };
-			std::vector<ExportAudioProcessAdapter*> exportProcesses;
-			std::vector<ctoot::audio::server::IOAudioProcess*> inputProcesses{};
-			std::vector<ctoot::audio::server::IOAudioProcess*> outputProcesses{};
-			std::shared_ptr<mpc::sequencer::FrameSeq> frameSeq{};
-			std::vector<int> oldPrograms{};
+			std::vector<std::shared_ptr<ExportAudioProcessAdapter>> exportProcesses;
+			std::vector<ctoot::audio::server::IOAudioProcess*> inputProcesses;
+			std::vector<ctoot::audio::server::IOAudioProcess*> outputProcesses;
+			std::shared_ptr<mpc::sequencer::FrameSeq> frameSeq;
+			std::vector<int> oldPrograms;
 
 		public:
 			ctoot::audio::server::UnrealAudioServer* getUnrealAudioServer();
@@ -98,8 +98,10 @@ namespace mpc {
 			void destroyDiskWriter();
 			void setupMidi();
 			void setupMixer();
-			void setGroupLevel(int i);
+			void setAssignableMixOutLevels();
 			void createSynth(int sampleRate);
+
+			void setupFX();
 
 		public:
 			std::weak_ptr<ctoot::audio::server::AudioServer> getAudioServer();

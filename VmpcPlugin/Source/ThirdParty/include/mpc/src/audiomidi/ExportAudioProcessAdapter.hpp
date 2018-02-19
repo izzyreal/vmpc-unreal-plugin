@@ -54,7 +54,7 @@ namespace mpc {
 		public:
 			void prepare(moduru::file::File* file, int lengthInFrames, int sampleRate);
 			void start();
-			int processAudio(ctoot::audio::core::AudioBuffer* buf, int nFrames) override;
+			int processAudio(ctoot::audio::core::AudioBuffer* buf) override;
 			virtual void stop();
 			void writeWav();
 

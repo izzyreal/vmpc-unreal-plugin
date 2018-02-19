@@ -42,6 +42,7 @@ endif()
 add_library(mpc ${_source_list})
 
 if(WIN32)
+	target_compile_options(mpc PRIVATE "/MP")
 	if (BUILD_DYNAMIC)
 		target_compile_options(mpc PRIVATE "/MD$<$<CONFIG:Debug>:d>")
 	else()

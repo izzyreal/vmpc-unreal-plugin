@@ -43,6 +43,7 @@ endif()
 
 add_library(ctoot ${_source_list})
 if(MSVC)
+	target_compile_options(ctoot PRIVATE "/MP")
 		if (BUILD_DYNAMIC)
 			target_compile_options(ctoot PRIVATE "/MD$<$<CONFIG:Debug>:d>")
 		else()

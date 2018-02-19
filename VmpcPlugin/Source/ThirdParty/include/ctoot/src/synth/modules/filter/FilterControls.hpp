@@ -3,6 +3,7 @@
 #include <control/CompoundControl.hpp>
 #include <synth/modules/filter/FilterVariables.hpp>
 
+#include <memory>
 #include <string>
 
 namespace ctoot {
@@ -22,7 +23,6 @@ namespace ctoot {
 				{
 
 				private:
-					static ctoot::control::ControlLaw* SEMITONE_LAW_;
 					ctoot::control::FloatControl* cutoffControl{ nullptr };
 					ctoot::control::FloatControl* resonanceControl{ nullptr };
 					float cutoff{ 0.f }, resonance{ 0.f };
@@ -48,8 +48,12 @@ namespace ctoot {
 					float getResonance() override;
 					void setSampleRate(int rate) override;
 
+				public:
 					FilterControls(int id, int instanceIndex, std::string name, int idOffset);
 					virtual ~FilterControls();
+
+				private:
+					static std::weak_ptr<ctoot::control::ControlLaw> SEMITONE_LAW();
 
 				};
 

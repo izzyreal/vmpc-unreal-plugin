@@ -13,48 +13,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define VMPCPLUGIN_VmpcAudioComponent_generated_h
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_VmpcAudioComponent_h_15_RPC_WRAPPERS \
- \
-	DECLARE_FUNCTION(execButton) \
-	{ \
-		P_GET_PROPERTY(UStrProperty,Z_Param_label); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		this->Button(Z_Param_label); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execDataWheel) \
-	{ \
-		P_GET_PROPERTY(UIntProperty,Z_Param_increment); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		this->DataWheel(Z_Param_increment); \
-		P_NATIVE_END; \
-	}
-
-
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_VmpcAudioComponent_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
- \
-	DECLARE_FUNCTION(execButton) \
-	{ \
-		P_GET_PROPERTY(UStrProperty,Z_Param_label); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		this->Button(Z_Param_label); \
-		P_NATIVE_END; \
-	} \
- \
-	DECLARE_FUNCTION(execDataWheel) \
-	{ \
-		P_GET_PROPERTY(UIntProperty,Z_Param_increment); \
-		P_FINISH; \
-		P_NATIVE_BEGIN; \
-		this->DataWheel(Z_Param_increment); \
-		P_NATIVE_END; \
-	}
-
-
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_VmpcAudioComponent_h_15_RPC_WRAPPERS
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_VmpcAudioComponent_h_15_RPC_WRAPPERS_NO_PURE_DECLS
 #define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_VmpcAudioComponent_h_15_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUVmpcAudioComponent(); \

@@ -18,7 +18,7 @@ namespace mpc {
 
 		public:
 
-			int processAudio(ctoot::audio::core::AudioBuffer* buf, int nFrames) override;
+			int processAudio(ctoot::audio::core::AudioBuffer* buf) override;
 			virtual ctoot::audio::core::AudioProcess* getProcess();
 
 			MpcInputAdapter(ctoot::audio::core::AudioProcess* process);

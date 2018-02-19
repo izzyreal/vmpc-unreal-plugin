@@ -25,7 +25,7 @@ namespace ctoot {
 			public:
 				void transport(ctoot::midi::core::MidiMessage* message, int timestamp) override;
 				virtual void closeInput();
-				virtual int32_t getLatency();
+				virtual int getLatency();
 				std::string getName() override;
 
 				LegacyMidiInput(LegacyDeviceAdaptor* adaptor, std::string name);

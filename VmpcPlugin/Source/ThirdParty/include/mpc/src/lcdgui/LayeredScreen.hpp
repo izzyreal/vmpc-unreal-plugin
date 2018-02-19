@@ -8,6 +8,8 @@
 #include <vector>
 #include <string>
 
+#include <gui/BMFParser.hpp>
+
 namespace moduru {
 	namespace observer {
 		class Observer;
@@ -31,6 +33,7 @@ namespace mpc {
 		class Knob;
 		class Popup;
 		class Wave;
+		class Effect;
 		class Field;
 		class Label;
 
@@ -42,6 +45,8 @@ namespace mpc {
 			MRECT dirtyArea;
 			std::vector<std::vector<bool> > pixels;
 			std::unique_ptr<moduru::observer::Observer> activeObserver;
+			std::vector<std::vector<bool>> atlas;
+			moduru::gui::bmfont font;
 
 		private:
 			void initObserver();
@@ -79,19 +84,20 @@ namespace mpc {
 			std::vector<std::weak_ptr<mpc::lcdgui::Component> > nonTextComps;
 
 		private:
-			std::shared_ptr<mpc::lcdgui::Popup> popup{};
-			std::shared_ptr<mpc::lcdgui::EnvGraph> envGraph{};
-			std::shared_ptr<mpc::lcdgui::TwoDots> twoDots{};
-			std::vector<std::shared_ptr<mpc::lcdgui::HorizontalBar>> horizontalBarsStepEditor{};
-			std::vector<std::shared_ptr<mpc::lcdgui::SelectedEventBar>> selectedEventBarsStepEditor{};
-			std::vector<std::shared_ptr<mpc::lcdgui::HorizontalBar>> horizontalBarsTempoChangeEditor{};
-			std::shared_ptr<mpc::lcdgui::Underline> underline{};
-			std::vector<std::shared_ptr<mpc::lcdgui::VerticalBar>> verticalBarsMixer{};
-			std::vector<std::shared_ptr<mpc::lcdgui::MixerFaderBackground>> mixerFaderBackgrounds{};
-			std::vector<std::shared_ptr<mpc::lcdgui::MixerTopBackground>> mixerTopBackgrounds{};
-			std::vector<std::shared_ptr<mpc::lcdgui::Knob>> knobs{};
-			std::shared_ptr<mpc::lcdgui::Wave> fineWave{};
-			std::shared_ptr<mpc::lcdgui::Wave> wave{};
+			std::shared_ptr<Popup> popup;
+			std::shared_ptr<EnvGraph> envGraph;
+			std::shared_ptr<TwoDots> twoDots;
+			std::vector<std::shared_ptr<HorizontalBar>> horizontalBarsStepEditor;
+			std::vector<std::shared_ptr<SelectedEventBar>> selectedEventBarsStepEditor;
+			std::vector<std::shared_ptr<HorizontalBar>> horizontalBarsTempoChangeEditor;
+			std::shared_ptr<Underline> underline;
+			std::vector<std::shared_ptr<VerticalBar>> verticalBarsMixer;
+			std::vector<std::shared_ptr<MixerFaderBackground>> mixerFaderBackgrounds;
+			std::vector<std::shared_ptr<MixerTopBackground>> mixerTopBackgrounds;
+			std::vector<std::shared_ptr<Knob>> knobs;
+			std::shared_ptr<Wave> fineWave;
+			std::shared_ptr<Wave> wave;
+			std::vector<std::shared_ptr<Effect>> effects;
 
 		private:
 			int previousLayer{ 0 };
@@ -120,20 +126,21 @@ namespace mpc {
 			void setPreviousFromNoteText(std::string text);
 			void setPreviousViewModeText(std::string text);
 			std::string getPreviousViewModeText();
-			std::vector<std::weak_ptr<mpc::lcdgui::HorizontalBar>> getHorizontalBarsTempoChangeEditor();
-			std::vector<std::weak_ptr<mpc::lcdgui::HorizontalBar>>getHorizontalBarsStepEditor();
-			std::vector<std::weak_ptr<mpc::lcdgui::VerticalBar>> getVerticalBarsMixer();
-			std::vector<std::weak_ptr<mpc::lcdgui::SelectedEventBar>> getSelectedEventBarsStepEditor();
+			std::vector<std::weak_ptr<HorizontalBar>> getHorizontalBarsTempoChangeEditor();
+			std::vector<std::weak_ptr<HorizontalBar>>getHorizontalBarsStepEditor();
+			std::vector<std::weak_ptr<VerticalBar>> getVerticalBarsMixer();
+			std::vector<std::weak_ptr<SelectedEventBar>> getSelectedEventBarsStepEditor();
 			FunctionKeys* getFunctionKeys();
-			std::vector<std::weak_ptr<mpc::lcdgui::Knob>> getKnobs();
-			std::vector<std::weak_ptr<mpc::lcdgui::MixerFaderBackground>> getMixerFaderBackgrounds();
-			std::vector<std::weak_ptr<mpc::lcdgui::MixerTopBackground>> getMixerTopBackgrounds();
+			std::vector<std::weak_ptr<Knob>> getKnobs();
+			std::vector<std::weak_ptr<MixerFaderBackground>> getMixerFaderBackgrounds();
+			std::vector<std::weak_ptr<MixerTopBackground>> getMixerTopBackgrounds();
 			void drawFunctionKeys(std::string screenName);
-			std::weak_ptr<mpc::lcdgui::Underline> getUnderline();
-			std::weak_ptr<mpc::lcdgui::TwoDots> getTwoDots();
-			std::weak_ptr<mpc::lcdgui::Wave> getFineWave();
-			std::weak_ptr<mpc::lcdgui::Wave> getWave();
-			std::weak_ptr<mpc::lcdgui::EnvGraph> getEnvGraph();
+			std::weak_ptr<Underline> getUnderline();
+			std::weak_ptr<TwoDots> getTwoDots();
+			std::weak_ptr<Wave> getFineWave();
+			std::weak_ptr<Wave> getWave();
+			std::weak_ptr<EnvGraph> getEnvGraph();
+			std::vector<std::weak_ptr<Effect>> getEffects();
 
 		public:
 			std::vector<std::vector<bool> >* getPixels();

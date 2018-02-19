@@ -138,7 +138,7 @@ namespace mpc {
 
 			int getPadNumber();
 			void open();
-			int processAudio(ctoot::audio::core::AudioBuffer* buffer, int nFrames) override;
+			int processAudio(ctoot::audio::core::AudioBuffer* buffer) override;
 			void close();
 			void startDecay();
 			int getVoiceOverlap();

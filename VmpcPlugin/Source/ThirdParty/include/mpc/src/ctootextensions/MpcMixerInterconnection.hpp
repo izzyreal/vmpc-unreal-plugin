@@ -2,6 +2,8 @@
 #include <audio/mixer/MixerInterconnection.hpp>
 #include <audio/server/AudioServer.hpp>
 
+#include <memory>
+
 namespace mpc {
 	namespace ctootextensions {
 
@@ -9,26 +11,27 @@ namespace mpc {
 			: public virtual ctoot::audio::mixer::MixerInterconnection
 		{
 
-		public:
-			ctoot::audio::core::AudioProcess* inputProcess{ nullptr };
-			ctoot::audio::core::AudioProcess* outputProcess{ nullptr };
+		private:
+			std::shared_ptr<ctoot::audio::core::AudioProcess> inputProcess;
+			std::shared_ptr<ctoot::audio::core::AudioProcess> outputProcess;
 
 		private:
 			bool leftEnabled{ true };
 			bool rightEnabled{ true };
 
 		public:
-			ctoot::audio::core::AudioProcess* getInputProcess();// override;
-			ctoot::audio::core::AudioProcess* getOutputProcess();// override;
-			virtual void setLeftEnabled(bool b);
-			virtual void setRightEnabled(bool b);
+			std::weak_ptr<ctoot::audio::core::AudioProcess> getInputProcess() override;
+			std::weak_ptr<ctoot::audio::core::AudioProcess> getOutputProcess() override;
+			
+		public:
+			void setLeftEnabled(bool b);
+			void setRightEnabled(bool b);
+			bool isLeftEnabled();
+			bool isRightEnabled();
 
 		public:
 			MpcMixerInterconnection(std::string name, ctoot::audio::server::AudioServer* server);
 			~MpcMixerInterconnection();
-
-		private:
-			friend class InterconnectionInputProcess;
 
 		};
 	}

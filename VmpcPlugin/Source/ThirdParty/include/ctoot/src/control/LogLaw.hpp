@@ -8,9 +8,6 @@ namespace ctoot {
 			: public AbstractLaw
 		{
 
-		public:
-			typedef AbstractLaw super;
-
 		private:
 			double logMin{}, logMax{};
 			double logSpan{};
@@ -19,6 +16,7 @@ namespace ctoot {
 			int intValue(float userVal) override;
 			float userValue(int intVal) override;
 
+		public:
 			LogLaw(float min, float max, std::string units);
 
 		};

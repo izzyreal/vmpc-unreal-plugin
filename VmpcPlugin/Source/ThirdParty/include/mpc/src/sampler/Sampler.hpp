@@ -171,11 +171,17 @@ namespace mpc {
 			void stopRecording();
 			void stopRecordingBasic();
 
+
+			/*
+			* Implement ctoot::audio::system::AudioDevice
+			*/
 		public:
 			std::string getName() override;
-			std::vector<ctoot::audio::system::AudioInput*> getAudioInputs() override;
-			std::vector<ctoot::audio::system::AudioOutput*> getAudioOutputs() override;
+			std::vector<std::weak_ptr<ctoot::audio::system::AudioInput>> getAudioInputs() override;
+			std::vector<std::weak_ptr<ctoot::audio::system::AudioOutput>> getAudioOutputs() override;
 			void closeAudio() override;
+
+		public:
 			int getPeakL();
 			int getPeakR();
 			int getLevelL();

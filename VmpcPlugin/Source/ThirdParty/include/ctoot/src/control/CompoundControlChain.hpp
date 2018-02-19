@@ -10,16 +10,13 @@ namespace ctoot {
 		{
 
 		public:
-			typedef CompoundControl super;
-
-		public:
 			virtual void add(std::shared_ptr<CompoundControl> control);
 			virtual void add(int index, std::shared_ptr<CompoundControl> control);
 			void insert(std::string insertName, std::string insertBeforeName);
-			void insert(Control* controlToInsert, std::string insertBeforeName);
+			void insert(std::shared_ptr<Control> controlToInsert, std::string insertBeforeName);
 
 		public:
-			virtual CompoundControl* createControl(std::string name);
+			virtual std::shared_ptr<CompoundControl> createControl(std::string name);
 
 		public:
 			void delete_(std::string deleteName);

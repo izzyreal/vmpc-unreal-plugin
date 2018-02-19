@@ -1,6 +1,8 @@
 #pragma once
 #include <audio/fader/FaderControl.hpp>
 
+#include <memory>
+
 namespace mpc {
 	namespace ctootextensions {
 
@@ -9,8 +11,7 @@ namespace mpc {
 		{
 
 		private:
-			static ctoot::control::ControlLaw mpcFaderLaw_;
-			//static ctoot::control::ControlLaw*& mpcFaderLaw();
+			static std::weak_ptr<ctoot::control::ControlLaw> MPC_FADER_LAW();
 
 		public:
 			void setValue(float value) override;

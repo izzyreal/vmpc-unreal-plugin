@@ -14,14 +14,14 @@ namespace ctoot {
 
 			private:
 				int operation{ 0 };
-				std::shared_ptr<control::CompoundControl> control{ nullptr };
+				std::weak_ptr<control::CompoundControl> control;
 
 			public:
 				virtual int getOperation();
-				virtual std::shared_ptr<control::CompoundControl> getControl();
+				virtual std::weak_ptr<control::CompoundControl> getControl();
 				std::string toString();
 
-				Mutation(int operation, std::shared_ptr<control::CompoundControl> control);
+				Mutation(int operation, std::weak_ptr<control::CompoundControl> control);
 				~Mutation();
 
 			private:

@@ -31,8 +31,8 @@ namespace ctoot {
 
 
 			protected:
-				void init_(int channelCount, int sampleCount, float sampleRate);
-				void init_(int channelCount, int sampleCount, float sampleRate, bool lazy);
+				void init(int channelCount, int sampleCount, float sampleRate);
+				void init(int channelCount, int sampleCount, float sampleRate, bool lazy);
 
 			private:
 
@@ -55,8 +55,8 @@ namespace ctoot {
 
 				void setSamplesFromBytes(std::vector<char> input, int inByteOffset, AudioFormat* format, int floatOffset, int frameCount);
 				void changeSampleCount(int newSampleCount, bool keepOldSamples);
-				void makeSilenceFrames(int nFrames);
-				void makeSilence(int channel, int nFrames);
+				void makeSilence();
+				void makeSilence(int channel);
 				void addChannel(bool silent);
 				void expandChannel(int targetChannelCount);
 				void mixDownChannels();

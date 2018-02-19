@@ -10,7 +10,7 @@ namespace ctoot {
 
 	namespace audio {
 		namespace system {
-			struct AudioOutput;
+			class AudioOutput;
 		}
 	}
 
@@ -22,7 +22,7 @@ namespace ctoot {
 		{
 
 		private:
-			std::vector<ctoot::audio::system::AudioOutput*> audioOutputs{};
+			std::vector<std::shared_ptr<ctoot::audio::system::AudioOutput>> audioOutputs{};
 			std::vector<std::shared_ptr<SynthChannel>> synthChannels{};
 			std::string location{ "" };
 
@@ -47,12 +47,12 @@ namespace ctoot {
 			void closeMidi() override;
 
 		public:
-			virtual void addAudioOutput(ctoot::audio::system::AudioOutput* output);
-			virtual void removeAudioOutput(ctoot::audio::system::AudioOutput* output);
+			virtual void addAudioOutput(std::shared_ptr<ctoot::audio::system::AudioOutput> output);
+			virtual void removeAudioOutput(std::weak_ptr<ctoot::audio::system::AudioOutput> output);
 
 		public:
-			std::vector<ctoot::audio::system::AudioOutput*> getAudioOutputs() override;
-			std::vector<ctoot::audio::system::AudioInput*> getAudioInputs() override;
+			std::vector<std::weak_ptr<ctoot::audio::system::AudioOutput>> getAudioOutputs() override;
+			std::vector<std::weak_ptr<ctoot::audio::system::AudioInput>> getAudioInputs() override;
 			void closeAudio() override;
 			std::string getName() override;
 

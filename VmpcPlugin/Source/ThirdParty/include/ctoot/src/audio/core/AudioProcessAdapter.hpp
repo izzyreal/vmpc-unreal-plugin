@@ -14,7 +14,7 @@ namespace ctoot {
 
 			public:
 				void open() override;
-				int processAudio(ctoot::audio::core::AudioBuffer* buf, int nFrames) override;
+				int processAudio(ctoot::audio::core::AudioBuffer* buf) override;
 				void close() override;
 
 				AudioProcessAdapter(AudioProcess* process);

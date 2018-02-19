@@ -20,7 +20,7 @@ namespace ctoot {
 				moduru::observer::Observer* routeObserver{ nullptr };
 
 			public:
-				EnumControl* routeControl{ nullptr };
+				ctoot::control::EnumControl* routeControl{ nullptr };
 
 			public:
 				AudioMixerStrip* getRoutedStrip() override;
@@ -29,7 +29,8 @@ namespace ctoot {
 				void open() override;
 				void close() override;
 
-				MainMixProcess(std::shared_ptr<AudioMixerStrip> strip, MixVariables* vars, AudioMixer* mixer);
+			public:
+				MainMixProcess(std::shared_ptr<AudioMixerStrip> strip, std::weak_ptr<MixVariables> vars, AudioMixer* mixer);
 				~MainMixProcess();
 
 			};

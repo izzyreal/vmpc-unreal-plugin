@@ -9,23 +9,15 @@ namespace ctoot {
 				: public audio::fader::FaderControl
 			{
 
-			private:
-				static std::vector<std::string> presetNames_;
-
 			public:
 				void setValue(float value) override;
-				std::vector<std::string>* getPresetNames() override;
+				std::vector<std::string> getPresetNames() override;
 				void applyPreset(std::string name) override;
 
+			public:
 				GainControl(bool muted);
 				virtual ~GainControl();
 
-			private:
-				friend class MixControls;
-				friend class LCRControl;
-				friend class PanControl;
-				friend class BalanceControl;
-				friend class FrontRearControl;
 			};
 
 		}

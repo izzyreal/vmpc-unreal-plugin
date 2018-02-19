@@ -12,6 +12,6 @@ namespace ctoot {
 				static const int VST_PROVIDER_ID{ 126 };
 				static const int TEMPORARY_PROVIDER_ID{ 127 };
 			};
-		};
-	};
-};
+		}
+	}
+}

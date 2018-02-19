@@ -8,7 +8,6 @@ namespace ctoot {
 		namespace synths {
 			namespace multi {
 
-
 				class MultiMidiSynthObserver
 					: public moduru::observer::Observer
 				{
@@ -16,14 +15,13 @@ namespace ctoot {
 				public:
 					void update(moduru::observer::Observable* obs, boost::any a) override;
 
-					MultiMidiSynthObserver(MultiMidiSynth* mms, std::weak_ptr<MultiSynthControls> controls);
+				private:
 					MultiMidiSynth* mms{ nullptr };
 					std::weak_ptr<MultiSynthControls> controls{ };
 
+				public:
+					MultiMidiSynthObserver(MultiMidiSynth* mms, std::weak_ptr<MultiSynthControls> controls);
 					~MultiMidiSynthObserver();
-
-				private:
-					//    friend class MultiMidiSynth;
 
 				};
 

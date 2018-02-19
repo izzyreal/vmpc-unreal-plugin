@@ -2,21 +2,23 @@
 #include <observer/Observable.hpp>
 
 #include <vector>
+#include <memory>
 
 namespace ctoot {
 	namespace audio {
 		namespace system {
-			struct AudioDevice;
-			struct AudioInput;
-			struct AudioOutput;
-			struct AudioSystem
-				: public virtual moduru::observer::Observable
+			class AudioDevice;
+			class AudioInput;
+			class AudioOutput;
+			class AudioSystem
+				: public moduru::observer::Observable
 			{
-				virtual void addAudioDevice(AudioDevice* device) = 0;
-				virtual void removeAudioDevice(AudioDevice* device) = 0;
-				virtual std::vector<AudioDevice*> getAudioDevices() = 0;
-				virtual std::vector<AudioInput*> getAudioInputs() = 0;
-				virtual std::vector<AudioOutput*> getAudioOutputs() = 0;
+			public:
+				virtual void addAudioDevice(std::weak_ptr<AudioDevice> device) = 0;
+				virtual void removeAudioDevice(std::weak_ptr<AudioDevice> device) = 0;
+				virtual std::vector<std::weak_ptr<AudioDevice>> getAudioDevices() = 0;
+				virtual std::vector<std::weak_ptr<AudioInput>> getAudioInputs() = 0;
+				virtual std::vector<std::weak_ptr<AudioOutput>> getAudioOutputs() = 0;
 				virtual void setAutoConnect(bool autoConnect) = 0;
 				virtual void close() = 0;
 

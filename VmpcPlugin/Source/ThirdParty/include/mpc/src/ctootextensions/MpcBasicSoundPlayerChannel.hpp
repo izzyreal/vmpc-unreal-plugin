@@ -28,7 +28,7 @@ namespace mpc {
 			std::weak_ptr<mpc::ctootextensions::Voice> voice{};
 			std::weak_ptr<ctoot::audio::mixer::AudioMixerStrip> mixerStrip{ };
 			std::weak_ptr<ctoot::audio::mixer::AudioMixer> mixer{ };
-			ctoot::audio::fader::FaderControl* fader{ nullptr };
+			std::weak_ptr<ctoot::audio::fader::FaderControl> fader;
 			std::weak_ptr<mpc::sampler::Sound> tempVars{};
 
 		public:

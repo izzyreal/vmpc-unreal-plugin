@@ -4,8 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/StaticMeshComponent.h"
-#include <Mpc.hpp>
-#include "VmpcAudioComponent.h"
+#include "Vmpc.h"
 #include "VmpcMeshComponent.generated.h"
 
 /**
@@ -16,16 +15,22 @@ class VMPCPLUGIN_API UVmpcMeshComponent : public UStaticMeshComponent
 {
 	GENERATED_BODY()
 
-		UFUNCTION(BlueprintCallable, Category = "Vmpc|Interaction")
-		void push();
+	UFUNCTION(BlueprintCallable, Category = "Vmpc|Interaction")
+		void triggerPush();
 
-		UFUNCTION(BlueprintCallable, Category = "Vmpc|Interaction")
+	UFUNCTION(BlueprintCallable, Category = "Vmpc|Interaction")
+		void triggerRelease();
+
+	UFUNCTION(BlueprintCallable, Category = "Vmpc|Interaction")
 		void EnableOutline(bool b);
 
 public:
-	void setMpc(UVmpcAudioComponent* mpc);
-
+	void setMpc(AVmpc* vmpc);
 
 private:
-	UVmpcAudioComponent* mpc;
+	int getPadNr(std::string name);
+
+private:
+	AVmpc* vmpc;
+
 };

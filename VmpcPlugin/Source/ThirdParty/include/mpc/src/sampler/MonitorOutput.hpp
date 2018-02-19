@@ -24,7 +24,7 @@ namespace mpc {
 		public:
 			std::string getName() override;
 			void open() override;
-			int32_t processAudio(ctoot::audio::core::AudioBuffer* buffer, int nFrames) override;
+			int32_t processAudio(ctoot::audio::core::AudioBuffer* buffer) override;
 			void close() override;
 			std::string getLocation() override;
 

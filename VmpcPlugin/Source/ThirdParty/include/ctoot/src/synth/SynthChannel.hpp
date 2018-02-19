@@ -40,7 +40,7 @@ namespace ctoot {
 
 		public:
 			virtual void setSampleRate(int rate);
-			virtual ctoot::audio::core::ChannelFormat* getChannelFormat();
+			virtual std::weak_ptr<ctoot::audio::core::ChannelFormat> getChannelFormat();
 			/*void noteOn(int pitch, int velocity); (already declared) */
 			/*void noteOff(int pitch); (already declared) */
 

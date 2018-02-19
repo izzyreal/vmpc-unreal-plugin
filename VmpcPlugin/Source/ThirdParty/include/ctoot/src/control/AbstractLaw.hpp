@@ -8,7 +8,7 @@ namespace ctoot {
 			: public virtual ControlLaw
 		{
 
-		public:
+		protected:
 			static const int resolution{ 1024 };
 			float min{};
 			float max{};

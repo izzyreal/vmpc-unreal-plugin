@@ -16,7 +16,7 @@ namespace ctoot {
 				std::string getSourceLabel();
 				std::string getSourceLocation();
 
-
+			public:
 				MetaInfo(std::string sourceLabel, std::string sourceLocation);
 				MetaInfo(std::string sourceLabel) : MetaInfo(sourceLabel, "") {};
 

@@ -22,8 +22,8 @@ namespace ctoot {
 			{
 
 			public:
-				std::shared_ptr<AudioControlsChain> controlChain{ nullptr };
-				std::vector<AudioProcess*> processes{};
+				std::weak_ptr<AudioControlsChain> controlChain;
+				std::vector<std::shared_ptr<AudioProcess>> processes;
 
 			private:
 				moodycamel::ConcurrentQueue<ctoot::control::ChainMutation*> mutationQueue {};
@@ -41,17 +41,17 @@ namespace ctoot {
 				int64_t elapsed{};
 
 			public:
-				int processAudio(ctoot::audio::core::AudioBuffer* buffer, int nFrames) override;
-				virtual int debugProcessAudio(ctoot::audio::core::AudioBuffer* buffer, int nFrames);
+				int processAudio(ctoot::audio::core::AudioBuffer* buffer) override;
+				virtual int debugProcessAudio(ctoot::audio::core::AudioBuffer* buffer);
 				void close() override;
 				virtual std::string getName();
 
 			public:
-				virtual AudioProcess* createProcess(AudioControls* controls);
+				virtual std::shared_ptr<AudioProcess> createProcess(std::weak_ptr<AudioControls> controls);
 				virtual void processMutations();
 
 			public:
-				AudioProcessChain(std::shared_ptr<AudioControlsChain> controlChain);
+				AudioProcessChain(std::weak_ptr<AudioControlsChain> controlChain);
 				~AudioProcessChain();
 
 			private:

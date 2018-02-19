@@ -19,21 +19,10 @@ class VMPCPLUGIN_API UVmpcAudioComponent : public USynthComponent
 
 	// Called to generate more audio
 	virtual void OnGenerateAudio(float* OutAudio, int32 NumSamples) override;
-
-	// from SynthComponent
-	virtual void Activate(bool bReset = false) override;
-	virtual void Deactivate() override;
-	virtual void OnRegister() override;
-	virtual void OnUnregister() override;
 	
-public:
-	std::shared_ptr<mpc::Mpc> mpcInst;
+private:
+	std::weak_ptr<mpc::Mpc> mpc;
 
 public:
-	UFUNCTION(BlueprintCallable, Category = "Vmpc|Synth|Components|Audio")
-		void DataWheel(int increment);
-
-	UFUNCTION(BlueprintCallable, Category = "Vmpc|Synth|Components|Audio")
-		void Button(FString label);
-
+	void setMpc(std::weak_ptr<mpc::Mpc> mpc);
 };

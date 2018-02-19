@@ -3,6 +3,7 @@
 #include <synth/synths/multi/MultiSynthControls.hpp>
 
 #include <vector>
+#include <memory>
 
 namespace mpc {
 	namespace ctootextensions {
@@ -14,13 +15,10 @@ namespace mpc {
 		{
 
 		private:
-			std::vector<Voice*> voices;
+			std::vector<std::shared_ptr<Voice>> voices;
 
 		public:
-			std::vector<Voice*>* getVoices();
-
-		public:
-			typedef ctoot::synth::synths::multi::MultiMidiSynth super;
+			std::vector<std::weak_ptr<Voice>> getVoices();
 
 		public:
 			virtual void mpcTransportChannel(int track, ctoot::midi::core::MidiMessage* msg, int chan, int varType, int varValue, int l);

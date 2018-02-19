@@ -60,11 +60,13 @@ namespace mpc {
 
 		private:
 			void addEventRealTime(std::shared_ptr<mpc::sequencer::Event> event);
+			std::weak_ptr<NoteEvent> getNoteEvent(int tick, int note);
 
 		public:
+			weak_ptr<NoteEvent> addNoteEvent(int tick, int note);
 			std::weak_ptr<Event> addEvent(int tick, std::string type);
 			std::weak_ptr<Event> cloneEvent(std::weak_ptr<Event> src);
-			void adjustDurLastEvent(int newDur);
+			bool adjustDurLastEvent(int newDur);
 			void removeEvent(int i);
 			void removeEvent(std::weak_ptr<Event> event);
 			void removeEvents();
@@ -94,9 +96,6 @@ namespace mpc {
 			std::vector<std::weak_ptr<Event>> getEventRange(int startTick, int endTick);
 			void correctTimeRange(int startPos, int endPos, int stepLength);
 
-		private:
-			void timingCorrect(int fromBar, int toBar, NoteEvent* noteEvent, int stepLength);
-
 		public:
 			void removeDoubles();
 			void sortEvents();
@@ -112,6 +111,9 @@ namespace mpc {
 			void sortEventsOfTickByNote(std::vector<std::weak_ptr<NoteEvent>> noteEvents);
 
 		public:
+			void timingCorrect(int fromBar, int toBar, NoteEvent* noteEvent, int stepLength);
+			int timingCorrectTick(int fromBar, int toBar, int tick, int stepLength);
+			int swingTick(int tick, int noteValue, int percentage);
 			void swing(int noteValue, int percentage, std::vector<int> noteRange);
 			void swing(std::vector<std::weak_ptr<Event>> eventsToSwing, int noteValue, int percentage, std::vector<int> noteRange);
 			void shiftTiming(bool later, int amount, int lastTick);
@@ -125,7 +127,7 @@ namespace mpc {
 
 		public:
 			Track(mpc::sequencer::Sequence* parent, Mpc* mpc, int i);
-			Track(Mpc* mpc, int i);
+			//Track(Mpc* mpc, int i);
 			~Track();
 
 		private:

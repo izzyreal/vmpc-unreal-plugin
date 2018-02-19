@@ -8,9 +8,6 @@ namespace ctoot {
 			: public Control
 		{
 
-		public:
-			typedef Control super;
-
 		private:
 			std::string trueStateLabel{ "" };
 			std::string falseStateLabel{ "" };
@@ -28,6 +25,8 @@ namespace ctoot {
 			void setIntValue(int value) override;
 			int getIntValue() override;
 			virtual int getWidthLimit();
+
+		public:
 			BooleanControl(int id, std::string name, bool initialValue, std::string trueStateLabel, std::string falseStateLabel);
 			BooleanControl(int id, std::string name, bool initialValue);
 			BooleanControl(int id, std::string name, bool initialValue, bool momentary);

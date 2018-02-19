@@ -17,6 +17,6 @@ namespace ctoot {
 				static const int AUX_BUS{ 126 };
 				static const int MAIN_BUS{ 127 };
 			};
-		};
-	};
-};
+		}
+	}
+}

@@ -48,6 +48,7 @@ namespace mpc {
 
 		private:
 			std::weak_ptr<moduru::file::Directory> getParentDir();
+			void renameFilesToAkai();
 
 		protected:
 			int getPathDepth() override;

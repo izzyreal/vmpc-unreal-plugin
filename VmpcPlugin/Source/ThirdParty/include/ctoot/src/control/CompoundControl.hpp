@@ -16,7 +16,7 @@ namespace ctoot {
 
 			static int deriveInstanceIndex(std::string name);
 
-		public:
+		protected:
 			std::vector<std::shared_ptr<Control>> controls{};
 
 		public:
@@ -26,14 +26,17 @@ namespace ctoot {
 			int providerId = USE_PARENT_PROVIDER_ID;
 
 		public:
+			std::vector<std::string> getControlNamesRecursive(int generation);
+
+		public:
 			virtual void checkInstanceIndex(int index);
 			virtual int getMaxInstance();
 			virtual void add(std::shared_ptr<Control> control);
-			virtual void remove(std::shared_ptr<Control> control);
+			virtual void remove(std::weak_ptr<Control> control);
 
 		public:
-			virtual std::vector<std::shared_ptr<Control>> getMemberControls();
-			virtual std::vector<std::shared_ptr<Control>> getControls();
+			std::vector<std::weak_ptr<Control>> getMemberControls();
+			virtual std::vector<std::weak_ptr<Control>> getControls();
 			virtual std::string toString();
 			virtual bool isAlwaysVertical();
 			virtual bool isAlwaysHorizontal();
@@ -41,10 +44,10 @@ namespace ctoot {
 			virtual float getAlignmentY();
 			virtual std::string* getAlternate();
 			virtual int getInstanceIndex();
-			virtual Control* find(std::type_info* clazz);
-			virtual Control* find(std::string name);
-			virtual CompoundControl* find(int providerId, int moduleId, int instanceIndex);
-			virtual Control* deepFind(int controlId);
+			virtual std::weak_ptr<Control> findByTypeIdName(std::string typeIdName);
+			virtual std::weak_ptr<Control> find(std::string name);
+			virtual std::weak_ptr<CompoundControl> find(int providerId, int moduleId, int instanceIndex);
+			virtual std::weak_ptr<Control> deepFind(int controlId);
 			//static CompoundControlPersistence* getPersistence();
 			//static void setPersistence(CompoundControlPersistence* p);
 			virtual bool canBeMoved();
@@ -64,7 +67,7 @@ namespace ctoot {
 			virtual void setInstanceIndex(int idx);
 
 		public:
-			virtual void disambiguate(CompoundControl* c);
+			virtual void disambiguate(std::weak_ptr<CompoundControl> c);
 
 		public:
 			virtual void close();

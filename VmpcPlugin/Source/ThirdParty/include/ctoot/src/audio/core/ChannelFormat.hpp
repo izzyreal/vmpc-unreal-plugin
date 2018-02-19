@@ -1,9 +1,11 @@
 #pragma once
+
+#include <audio/core/AudioBuffer.hpp>
+
 #include <string>
 #include <cstdint>
 #include <vector>
-
-#include <audio/core/AudioBuffer.hpp>
+#include <memory>
 
 namespace ctoot {
 	namespace audio {
@@ -27,20 +29,18 @@ namespace ctoot {
 				virtual bool isLFE(int chan) = 0;
 				virtual std::string getName(int chan) = 0;
 
-				virtual int mix(ctoot::audio::core::AudioBuffer* destBuffer, ctoot::audio::core::AudioBuffer* sourceBuffer, std::vector<float> gain, int nFrames);
-			private:
-				static ChannelFormat* STEREO_;
-				static ChannelFormat* MONO_;
-				static ChannelFormat* QUAD_;
-				static ChannelFormat* FIVE_1_;
+			public:
+				int mix(ctoot::audio::core::AudioBuffer* destBuffer, ctoot::audio::core::AudioBuffer* sourceBuffer, std::vector<float> gain);
+
+			public:
+				static std::weak_ptr<ChannelFormat> MONO();
+				static std::weak_ptr<ChannelFormat> STEREO();
+				static std::weak_ptr<ChannelFormat> QUAD();
+				static std::weak_ptr<ChannelFormat> FIVE_1();
+
 			public:
 				ChannelFormat();
 
-			public:
-				static ChannelFormat*& MONO();
-				static ChannelFormat*& STEREO();
-				static ChannelFormat*& QUAD();
-				static ChannelFormat*& FIVE_1();
 			};
 
 		}

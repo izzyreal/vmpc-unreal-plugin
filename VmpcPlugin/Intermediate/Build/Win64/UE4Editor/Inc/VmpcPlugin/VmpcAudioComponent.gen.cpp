@@ -17,65 +17,9 @@ void EmptyLinkFunctionForGeneratedCodeVmpcAudioComponent() {}
 	VMPCPLUGIN_API UClass* Z_Construct_UClass_UVmpcAudioComponent();
 	AUDIOMIXER_API UClass* Z_Construct_UClass_USynthComponent();
 	UPackage* Z_Construct_UPackage__Script_VmpcPlugin();
-	VMPCPLUGIN_API UFunction* Z_Construct_UFunction_UVmpcAudioComponent_Button();
-	VMPCPLUGIN_API UFunction* Z_Construct_UFunction_UVmpcAudioComponent_DataWheel();
 // End Cross Module References
 	void UVmpcAudioComponent::StaticRegisterNativesUVmpcAudioComponent()
 	{
-		UClass* Class = UVmpcAudioComponent::StaticClass();
-		static const FNameNativePtrPair Funcs[] = {
-			{ "Button", (Native)&UVmpcAudioComponent::execButton },
-			{ "DataWheel", (Native)&UVmpcAudioComponent::execDataWheel },
-		};
-		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
-	}
-	UFunction* Z_Construct_UFunction_UVmpcAudioComponent_Button()
-	{
-		struct VmpcAudioComponent_eventButton_Parms
-		{
-			FString label;
-		};
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-			static const UE4CodeGen_Private::FStrPropertyParams NewProp_label = { UE4CodeGen_Private::EPropertyClass::Str, "label", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000080, 1, nullptr, STRUCT_OFFSET(VmpcAudioComponent_eventButton_Parms, label), METADATA_PARAMS(nullptr, 0) };
-			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
-				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_label,
-			};
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "Category", "Vmpc|Synth|Components|Audio" },
-				{ "ModuleRelativePath", "Public/VmpcAudioComponent.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_UVmpcAudioComponent, "Button", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(VmpcAudioComponent_eventButton_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
-	}
-	UFunction* Z_Construct_UFunction_UVmpcAudioComponent_DataWheel()
-	{
-		struct VmpcAudioComponent_eventDataWheel_Parms
-		{
-			int32 increment;
-		};
-		static UFunction* ReturnFunction = nullptr;
-		if (!ReturnFunction)
-		{
-			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_increment = { UE4CodeGen_Private::EPropertyClass::Int, "increment", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000080, 1, nullptr, STRUCT_OFFSET(VmpcAudioComponent_eventDataWheel_Parms, increment), METADATA_PARAMS(nullptr, 0) };
-			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
-				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_increment,
-			};
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-				{ "Category", "Vmpc|Synth|Components|Audio" },
-				{ "ModuleRelativePath", "Public/VmpcAudioComponent.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_UVmpcAudioComponent, "DataWheel", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(VmpcAudioComponent_eventDataWheel_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
-			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
-		}
-		return ReturnFunction;
 	}
 	UClass* Z_Construct_UClass_UVmpcAudioComponent_NoRegister()
 	{
@@ -89,10 +33,6 @@ void EmptyLinkFunctionForGeneratedCodeVmpcAudioComponent() {}
 			static UObject* (*const DependentSingletons[])() = {
 				(UObject* (*)())Z_Construct_UClass_USynthComponent,
 				(UObject* (*)())Z_Construct_UPackage__Script_VmpcPlugin,
-			};
-			static const FClassFunctionLinkInfo FuncInfo[] = {
-				{ &Z_Construct_UFunction_UVmpcAudioComponent_Button, "Button" }, // 2190278832
-				{ &Z_Construct_UFunction_UVmpcAudioComponent_DataWheel, "DataWheel" }, // 28274145
 			};
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
@@ -110,7 +50,7 @@ void EmptyLinkFunctionForGeneratedCodeVmpcAudioComponent() {}
 				&UVmpcAudioComponent::StaticClass,
 				DependentSingletons, ARRAY_COUNT(DependentSingletons),
 				0x00B00080u,
-				FuncInfo, ARRAY_COUNT(FuncInfo),
+				nullptr, 0,
 				nullptr, 0,
 				nullptr,
 				&StaticCppClassTypeInfo,
@@ -121,7 +61,7 @@ void EmptyLinkFunctionForGeneratedCodeVmpcAudioComponent() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UVmpcAudioComponent, 2189346395);
+	IMPLEMENT_CLASS(UVmpcAudioComponent, 972556635);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_UVmpcAudioComponent(Z_Construct_UClass_UVmpcAudioComponent, &UVmpcAudioComponent::StaticClass, TEXT("/Script/VmpcPlugin"), TEXT("UVmpcAudioComponent"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UVmpcAudioComponent);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

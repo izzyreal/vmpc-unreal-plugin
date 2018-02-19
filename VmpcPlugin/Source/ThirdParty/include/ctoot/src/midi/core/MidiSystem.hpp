@@ -6,13 +6,14 @@ namespace ctoot {
 	namespace midi {
 		namespace core {
 
-			struct MidiDevice;
-			struct MidiInput;
-			struct MidiOutput;
+			class MidiDevice;
+			class MidiInput;
+			class MidiOutput;
 
-			struct MidiSystem
+			class MidiSystem
 				: public moduru::observer::Observable
 			{
+			public:
 				virtual void addMidiDevice(MidiDevice* device) = 0;
 				virtual void removeMidiDevice(MidiDevice* device) = 0;
 				virtual std::vector<MidiDevice*> getMidiDevices() = 0;

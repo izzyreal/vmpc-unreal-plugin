@@ -10,9 +10,6 @@ namespace ctoot {
 				: public MixControls
 			{
 
-			public:
-				typedef MixControls super;
-
 			private:
 				MainMixControls* mainMixControls{ nullptr };
 
@@ -20,7 +17,8 @@ namespace ctoot {
 				bool isEnabled() override;
 				float getGain() override;
 
-				PostFadeMixControls(std::weak_ptr<MixerControls> mixerControls, int stripId, std::weak_ptr<BusControls> busControls, MainMixControls* mainMixControls);
+			public:
+				PostFadeMixControls(MixerControls* mixerControls, int stripId, std::weak_ptr<BusControls> busControls, MainMixControls* mainMixControls);
 				~PostFadeMixControls();
 			};
 		}

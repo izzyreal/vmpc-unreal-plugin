@@ -17,6 +17,6 @@ namespace ctoot {
 				static const int DISTORT_BASE_ID{ 112 };
 				static const int MIXER_BASE_ID{ 120 };
 			};
-		};
-	};
-};
+		}
+	}
+}

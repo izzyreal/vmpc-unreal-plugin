@@ -10,12 +10,12 @@ namespace ctoot {
 			{
 
 			public:
-				typedef MixControls super;
 				bool canBeInsertedBefore() override;
 				bool canBeMovedBefore() override;
 				bool canBeMoved() override;
 
-				FxBusMasterMixControls(bool hasMixControls, std::weak_ptr<MixerControls> mixerControls, int stripId, std::weak_ptr<BusControls> busControls, bool isMaster);
+			public:
+				FxBusMasterMixControls(bool hasMixControls, MixerControls* mixerControls, int stripId, std::weak_ptr<BusControls> busControls, bool isMaster);
 				bool hasMixControls;
 
 			};

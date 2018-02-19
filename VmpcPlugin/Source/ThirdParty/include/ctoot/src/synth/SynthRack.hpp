@@ -9,19 +9,19 @@ namespace ctoot {
 
 	namespace midi {
 		namespace core {
-			struct MidiSystem;
+			class MidiSystem;
 		}
 	}
 	namespace audio {
 		namespace system {
-			struct AudioSystem;
+			class AudioSystem;
 		}
 	}
 
 
 	namespace synth {
 
-		struct MidiSynth;
+		class MidiSynth;
 		class SynthRackControls;
 		class SynthRackObserver;
 

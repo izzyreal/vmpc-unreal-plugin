@@ -9,26 +9,19 @@ namespace ctoot {
 
 			class MainMixControls
 				: public MixControls
-
 			{
 
-			public:
-				typedef MixControls super;
-
 			private:
-				EnumControl* routeControl{ nullptr };
+				ctoot::control::EnumControl* routeControl{ nullptr };
 
 			public:
-				EnumControl* createRouteControl(int stripId) override;
+				ctoot::control::EnumControl* createRouteControl(int stripId) override;
+				ctoot::control::EnumControl* getRouteControl() override;
 
 			public:
-				EnumControl* getRouteControl() override;
-
-				MainMixControls(std::weak_ptr<MixerControls> mixerControls, int stripId, std::shared_ptr<BusControls> busControls, bool isMaster);
+				MainMixControls(MixerControls* mixerControls, int stripId, std::weak_ptr<BusControls> busControls, bool isMaster);
 				~MainMixControls();
 
-			private:
-				friend class RouteControl;
 			};
 
 		}
