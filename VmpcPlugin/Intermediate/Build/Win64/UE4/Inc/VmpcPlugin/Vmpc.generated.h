@@ -8,48 +8,144 @@
 #include "ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
-class UPrimitiveComponent;
-class AActor;
-struct FVector;
-struct FHitResult;
 #ifdef VMPCPLUGIN_Vmpc_generated_h
 #error "Vmpc.generated.h already included, missing '#pragma once' in Vmpc.h"
 #endif
 #define VMPCPLUGIN_Vmpc_generated_h
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_RPC_WRAPPERS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_RPC_WRAPPERS \
  \
-	DECLARE_FUNCTION(execOnHit) \
+	DECLARE_FUNCTION(execSetVolume) \
 	{ \
-		P_GET_OBJECT(UPrimitiveComponent,Z_Param_HitComp); \
-		P_GET_OBJECT(AActor,Z_Param_OtherActor); \
-		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComp); \
-		P_GET_STRUCT(FVector,Z_Param_NormalImpulse); \
-		P_GET_STRUCT_REF(FHitResult,Z_Param_Out_Hit); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_value); \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		this->OnHit(Z_Param_HitComp,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_NormalImpulse,Z_Param_Out_Hit); \
+		this->SetVolume(Z_Param_value); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execSetRecGain) \
+	{ \
+		P_GET_PROPERTY(UIntProperty,Z_Param_value); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->SetRecGain(Z_Param_value); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execPadRelease) \
+	{ \
+		P_GET_PROPERTY(UIntProperty,Z_Param_pad); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->PadRelease(Z_Param_pad); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execPadPush) \
+	{ \
+		P_GET_PROPERTY(UIntProperty,Z_Param_pad); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->PadPush(Z_Param_pad); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execButtonRelease) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_label); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->ButtonRelease(Z_Param_label); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execButtonPush) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_label); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->ButtonPush(Z_Param_label); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execDataWheelTurn) \
+	{ \
+		P_GET_PROPERTY(UIntProperty,Z_Param_increment); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->DataWheelTurn(Z_Param_increment); \
 		P_NATIVE_END; \
 	}
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_RPC_WRAPPERS_NO_PURE_DECLS \
  \
-	DECLARE_FUNCTION(execOnHit) \
+	DECLARE_FUNCTION(execSetVolume) \
 	{ \
-		P_GET_OBJECT(UPrimitiveComponent,Z_Param_HitComp); \
-		P_GET_OBJECT(AActor,Z_Param_OtherActor); \
-		P_GET_OBJECT(UPrimitiveComponent,Z_Param_OtherComp); \
-		P_GET_STRUCT(FVector,Z_Param_NormalImpulse); \
-		P_GET_STRUCT_REF(FHitResult,Z_Param_Out_Hit); \
+		P_GET_PROPERTY(UIntProperty,Z_Param_value); \
 		P_FINISH; \
 		P_NATIVE_BEGIN; \
-		this->OnHit(Z_Param_HitComp,Z_Param_OtherActor,Z_Param_OtherComp,Z_Param_NormalImpulse,Z_Param_Out_Hit); \
+		this->SetVolume(Z_Param_value); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execSetRecGain) \
+	{ \
+		P_GET_PROPERTY(UIntProperty,Z_Param_value); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->SetRecGain(Z_Param_value); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execPadRelease) \
+	{ \
+		P_GET_PROPERTY(UIntProperty,Z_Param_pad); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->PadRelease(Z_Param_pad); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execPadPush) \
+	{ \
+		P_GET_PROPERTY(UIntProperty,Z_Param_pad); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->PadPush(Z_Param_pad); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execButtonRelease) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_label); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->ButtonRelease(Z_Param_label); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execButtonPush) \
+	{ \
+		P_GET_PROPERTY(UStrProperty,Z_Param_label); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->ButtonPush(Z_Param_label); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execDataWheelTurn) \
+	{ \
+		P_GET_PROPERTY(UIntProperty,Z_Param_increment); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->DataWheelTurn(Z_Param_increment); \
 		P_NATIVE_END; \
 	}
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_INCLASS_NO_PURE_DECLS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAVmpc(); \
 	friend VMPCPLUGIN_API class UClass* Z_Construct_UClass_AVmpc(); \
@@ -59,7 +155,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_INCLASS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_INCLASS \
 private: \
 	static void StaticRegisterNativesAVmpc(); \
 	friend VMPCPLUGIN_API class UClass* Z_Construct_UClass_AVmpc(); \
@@ -69,7 +165,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_STANDARD_CONSTRUCTORS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AVmpc(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AVmpc) \
@@ -82,7 +178,7 @@ private: \
 public:
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_ENHANCED_CONSTRUCTORS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AVmpc(AVmpc&&); \
@@ -93,31 +189,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AVmpc); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AVmpc)
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_PRIVATE_PROPERTY_OFFSET \
-	FORCEINLINE static uint32 __PPO__Display() { return STRUCT_OFFSET(AVmpc, Display); } \
-	FORCEINLINE static uint32 __PPO__dtMaterialInstanceDynamic() { return STRUCT_OFFSET(AVmpc, dtMaterialInstanceDynamic); } \
-	FORCEINLINE static uint32 __PPO__dtTexture() { return STRUCT_OFFSET(AVmpc, dtTexture); }
-
-
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_12_PROLOG
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_GENERATED_BODY_LEGACY \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_PRIVATE_PROPERTY_OFFSET
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_19_PROLOG
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_PRIVATE_PROPERTY_OFFSET \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_RPC_WRAPPERS \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_INCLASS \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_STANDARD_CONSTRUCTORS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_PRIVATE_PROPERTY_OFFSET \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_RPC_WRAPPERS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_INCLASS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_GENERATED_BODY \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_PRIVATE_PROPERTY_OFFSET \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_INCLASS_NO_PURE_DECLS \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_15_ENHANCED_CONSTRUCTORS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_PRIVATE_PROPERTY_OFFSET \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_RPC_WRAPPERS_NO_PURE_DECLS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_INCLASS_NO_PURE_DECLS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

@@ -15,6 +15,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_VmpcMeshComponent_h_16_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execisInteractable) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=this->isInteractable(); \
+		P_NATIVE_END; \
+	} \
+ \
 	DECLARE_FUNCTION(execEnableOutline) \
 	{ \
 		P_GET_UBOOL(Z_Param_b); \
@@ -42,6 +50,14 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 
 #define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_VmpcMeshComponent_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execisInteractable) \
+	{ \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=this->isInteractable(); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execEnableOutline) \
 	{ \

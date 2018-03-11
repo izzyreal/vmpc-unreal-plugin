@@ -1,6 +1,8 @@
 #include "RotatingComponent.h"
 
 #include "Logger.hpp"
+
+#include "Runtime/Engine/Classes/PhysicsEngine/BodySetup.h"
 #include "Kismet/KismetMathLibrary.h"
 
 #include <hardware/Hardware.hpp>
@@ -10,6 +12,7 @@ void URotatingComponent::setPivot(UStaticMeshComponent* pivot) {
 	// Pivot is a box mesh located such that when UE does a pivot->Bounds.Origin,
 	// the result is an arbitrary point located on the jog wheel's Y-axis.
 	this->pivot = pivot;
+	GetBodySetup()->CollisionTraceFlag = ECollisionTraceFlag::CTF_UseComplexAsSimple;
 }
 
 void URotatingComponent::BeginPlay()

@@ -24,8 +24,16 @@ class VMPCPLUGIN_API UVmpcMeshComponent : public UStaticMeshComponent
 	UFUNCTION(BlueprintCallable, Category = "Vmpc|Interaction")
 		void EnableOutline(bool b);
 
+	UFUNCTION(BlueprintCallable, Category = "Vmpc|Interaction")
+		virtual bool isInteractable();
+
 public:
 	void setMpc(AVmpc* vmpc);
+	void setPushable(bool b);
+
+public:
+	bool isPushable();
+	bool isPushed();
 
 private:
 	int getPadNr(std::string name);
@@ -33,4 +41,8 @@ private:
 private:
 	AVmpc* vmpc;
 
+	bool interactable = false;
+	bool pushable = false;
+
+	bool pushed = false;
 };

@@ -22,6 +22,10 @@ void EmptyLinkFunctionForGeneratedCodeVmpc() {}
 	VMPCPLUGIN_API UFunction* Z_Construct_UFunction_AVmpc_DataWheelTurn();
 	VMPCPLUGIN_API UFunction* Z_Construct_UFunction_AVmpc_PadPush();
 	VMPCPLUGIN_API UFunction* Z_Construct_UFunction_AVmpc_PadRelease();
+	VMPCPLUGIN_API UFunction* Z_Construct_UFunction_AVmpc_SetRecGain();
+	VMPCPLUGIN_API UFunction* Z_Construct_UFunction_AVmpc_SetVolume();
+	VMPCPLUGIN_API UClass* Z_Construct_UClass_UVmpcMeshComponent_NoRegister();
+	VMPCPLUGIN_API UClass* Z_Construct_UClass_UKnobComponent_NoRegister();
 	VMPCPLUGIN_API UClass* Z_Construct_UClass_URotatingComponent_NoRegister();
 	VMPCPLUGIN_API UClass* Z_Construct_UClass_ULcdComponent_NoRegister();
 // End Cross Module References
@@ -34,6 +38,8 @@ void EmptyLinkFunctionForGeneratedCodeVmpc() {}
 			{ "DataWheelTurn", (Native)&AVmpc::execDataWheelTurn },
 			{ "PadPush", (Native)&AVmpc::execPadPush },
 			{ "PadRelease", (Native)&AVmpc::execPadRelease },
+			{ "SetRecGain", (Native)&AVmpc::execSetRecGain },
+			{ "SetVolume", (Native)&AVmpc::execSetVolume },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, ARRAY_COUNT(Funcs));
 	}
@@ -157,6 +163,55 @@ void EmptyLinkFunctionForGeneratedCodeVmpc() {}
 		}
 		return ReturnFunction;
 	}
+	UFunction* Z_Construct_UFunction_AVmpc_SetRecGain()
+	{
+		struct Vmpc_eventSetRecGain_Parms
+		{
+			int32 value;
+		};
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_value = { UE4CodeGen_Private::EPropertyClass::Int, "value", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000080, 1, nullptr, STRUCT_OFFSET(Vmpc_eventSetRecGain_Parms, value), METADATA_PARAMS(nullptr, 0) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_value,
+			};
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "Category", "Vmpc|Synth|Components|Audio" },
+				{ "ModuleRelativePath", "Public/Vmpc.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AVmpc, "SetRecGain", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(Vmpc_eventSetRecGain_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_AVmpc_SetVolume()
+	{
+		struct Vmpc_eventSetVolume_Parms
+		{
+			int32 value;
+		};
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_value = { UE4CodeGen_Private::EPropertyClass::Int, "value", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000080, 1, nullptr, STRUCT_OFFSET(Vmpc_eventSetVolume_Parms, value), METADATA_PARAMS(nullptr, 0) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_value,
+			};
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "Category", "Vmpc|Synth|Components|Audio" },
+				{ "ModuleRelativePath", "Public/Vmpc.h" },
+				{ "ToolTip", "0 - 100" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_AVmpc, "SetVolume", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(Vmpc_eventSetVolume_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
 	UClass* Z_Construct_UClass_AVmpc_NoRegister()
 	{
 		return AVmpc::StaticClass();
@@ -176,6 +231,8 @@ void EmptyLinkFunctionForGeneratedCodeVmpc() {}
 				{ &Z_Construct_UFunction_AVmpc_DataWheelTurn, "DataWheelTurn" }, // 2839694487
 				{ &Z_Construct_UFunction_AVmpc_PadPush, "PadPush" }, // 895416283
 				{ &Z_Construct_UFunction_AVmpc_PadRelease, "PadRelease" }, // 3952745916
+				{ &Z_Construct_UFunction_AVmpc_SetRecGain, "SetRecGain" }, // 3099486015
+				{ &Z_Construct_UFunction_AVmpc_SetVolume, "SetVolume" }, // 3936757569
 			};
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
@@ -184,6 +241,15 @@ void EmptyLinkFunctionForGeneratedCodeVmpc() {}
 			};
 #endif
 #if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_BodyComponent_MetaData[] = {
+				{ "AllowPrivateAccess", "true" },
+				{ "Category", "Vmpc" },
+				{ "EditInline", "true" },
+				{ "ModuleRelativePath", "Public/Vmpc.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_BodyComponent = { UE4CodeGen_Private::EPropertyClass::Object, "BodyComponent", RF_Public|RF_Transient|RF_MarkAsNative, 0x00100000000a0009, 1, nullptr, STRUCT_OFFSET(AVmpc, BodyComponent), Z_Construct_UClass_UVmpcMeshComponent_NoRegister, METADATA_PARAMS(NewProp_BodyComponent_MetaData, ARRAY_COUNT(NewProp_BodyComponent_MetaData)) };
+#if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_VolumeComponent_MetaData[] = {
 				{ "AllowPrivateAccess", "true" },
 				{ "Category", "Vmpc" },
@@ -191,7 +257,7 @@ void EmptyLinkFunctionForGeneratedCodeVmpc() {}
 				{ "ModuleRelativePath", "Public/Vmpc.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_VolumeComponent = { UE4CodeGen_Private::EPropertyClass::Object, "VolumeComponent", RF_Public|RF_Transient|RF_MarkAsNative, 0x00100000000a0009, 1, nullptr, STRUCT_OFFSET(AVmpc, VolumeComponent), Z_Construct_UClass_URotatingComponent_NoRegister, METADATA_PARAMS(NewProp_VolumeComponent_MetaData, ARRAY_COUNT(NewProp_VolumeComponent_MetaData)) };
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_VolumeComponent = { UE4CodeGen_Private::EPropertyClass::Object, "VolumeComponent", RF_Public|RF_Transient|RF_MarkAsNative, 0x00100000000a0009, 1, nullptr, STRUCT_OFFSET(AVmpc, VolumeComponent), Z_Construct_UClass_UKnobComponent_NoRegister, METADATA_PARAMS(NewProp_VolumeComponent_MetaData, ARRAY_COUNT(NewProp_VolumeComponent_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_RecGainComponent_MetaData[] = {
 				{ "AllowPrivateAccess", "true" },
@@ -200,7 +266,7 @@ void EmptyLinkFunctionForGeneratedCodeVmpc() {}
 				{ "ModuleRelativePath", "Public/Vmpc.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_RecGainComponent = { UE4CodeGen_Private::EPropertyClass::Object, "RecGainComponent", RF_Public|RF_Transient|RF_MarkAsNative, 0x00100000000a0009, 1, nullptr, STRUCT_OFFSET(AVmpc, RecGainComponent), Z_Construct_UClass_URotatingComponent_NoRegister, METADATA_PARAMS(NewProp_RecGainComponent_MetaData, ARRAY_COUNT(NewProp_RecGainComponent_MetaData)) };
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_RecGainComponent = { UE4CodeGen_Private::EPropertyClass::Object, "RecGainComponent", RF_Public|RF_Transient|RF_MarkAsNative, 0x00100000000a0009, 1, nullptr, STRUCT_OFFSET(AVmpc, RecGainComponent), Z_Construct_UClass_UKnobComponent_NoRegister, METADATA_PARAMS(NewProp_RecGainComponent_MetaData, ARRAY_COUNT(NewProp_RecGainComponent_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DataWheelComponent_MetaData[] = {
 				{ "AllowPrivateAccess", "true" },
@@ -211,19 +277,20 @@ void EmptyLinkFunctionForGeneratedCodeVmpc() {}
 #endif
 			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_DataWheelComponent = { UE4CodeGen_Private::EPropertyClass::Object, "DataWheelComponent", RF_Public|RF_Transient|RF_MarkAsNative, 0x00100000000a0009, 1, nullptr, STRUCT_OFFSET(AVmpc, DataWheelComponent), Z_Construct_UClass_URotatingComponent_NoRegister, METADATA_PARAMS(NewProp_DataWheelComponent_MetaData, ARRAY_COUNT(NewProp_DataWheelComponent_MetaData)) };
 #if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_Display_MetaData[] = {
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DisplayLcd_MetaData[] = {
 				{ "AllowPrivateAccess", "true" },
 				{ "Category", "Vmpc" },
 				{ "EditInline", "true" },
 				{ "ModuleRelativePath", "Public/Vmpc.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_Display = { UE4CodeGen_Private::EPropertyClass::Object, "Display", RF_Public|RF_Transient|RF_MarkAsNative, 0x00100000000a0009, 1, nullptr, STRUCT_OFFSET(AVmpc, Display), Z_Construct_UClass_ULcdComponent_NoRegister, METADATA_PARAMS(NewProp_Display_MetaData, ARRAY_COUNT(NewProp_Display_MetaData)) };
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_DisplayLcd = { UE4CodeGen_Private::EPropertyClass::Object, "DisplayLcd", RF_Public|RF_Transient|RF_MarkAsNative, 0x00100000000a0009, 1, nullptr, STRUCT_OFFSET(AVmpc, DisplayLcd), Z_Construct_UClass_ULcdComponent_NoRegister, METADATA_PARAMS(NewProp_DisplayLcd_MetaData, ARRAY_COUNT(NewProp_DisplayLcd_MetaData)) };
 			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_BodyComponent,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_VolumeComponent,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_RecGainComponent,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DataWheelComponent,
-				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_Display,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DisplayLcd,
 			};
 			static const FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 				TCppClassTypeTraits<AVmpc>::IsAbstract,
@@ -243,7 +310,7 @@ void EmptyLinkFunctionForGeneratedCodeVmpc() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(AVmpc, 2276386296);
+	IMPLEMENT_CLASS(AVmpc, 3430940458);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_AVmpc(Z_Construct_UClass_AVmpc, &AVmpc::StaticClass, TEXT("/Script/VmpcPlugin"), TEXT("AVmpc"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(AVmpc);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

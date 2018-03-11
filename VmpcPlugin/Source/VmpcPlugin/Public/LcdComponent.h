@@ -18,6 +18,8 @@ class VMPCPLUGIN_API ULcdComponent : public UStaticMeshComponent
 
 private:
 	std::weak_ptr<mpc::Mpc> mpc;
+	int mipCount = 2;
+	int scale = 4;
 	int offset;
 	int dtWidth;
 	int dtHeight;
@@ -34,10 +36,13 @@ private:
 
 	FUpdateTextureRegion2D* dtUpdateTextureRegion;
 
+private:
+	void UpdateTextureRegions(UTexture2D* Texture, int32 MipIndex, uint32 NumRegions, FUpdateTextureRegion2D* Regions, uint32 SrcPitch, uint32 SrcBpp, uint8* SrcData, bool bFreeData);
+	void AllocateMips();
+
 public:
 	void CreateTexture(bool argForceMake);
 	void UpdateTexture();
-	void UpdateTextureRegions(UTexture2D* Texture, int32 MipIndex, uint32 NumRegions, FUpdateTextureRegion2D* Regions, uint32 SrcPitch, uint32 SrcBpp, uint8* SrcData, bool bFreeData);
 	void setMpc(std::weak_ptr<mpc::Mpc> mpc);
 	
 };

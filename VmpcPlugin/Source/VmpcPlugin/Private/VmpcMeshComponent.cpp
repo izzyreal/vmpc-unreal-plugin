@@ -62,5 +62,22 @@ void UVmpcMeshComponent::triggerRelease() {
 }
 
 void UVmpcMeshComponent::EnableOutline(bool b) {
+	MLOG("Enable outline called");
 	SetRenderCustomDepth(b);
+}
+
+void UVmpcMeshComponent::setPushable(bool b) {
+	pushable = b;
+}
+
+bool UVmpcMeshComponent::isInteractable() {
+	return pushable;
+}
+
+bool UVmpcMeshComponent::isPushable() {
+	return pushable;
+}
+
+bool UVmpcMeshComponent::isPushed() {
+	return pushed;
 }

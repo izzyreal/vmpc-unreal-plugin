@@ -15,6 +15,9 @@ class VMPCPLUGIN_API URotatingComponent : public UVmpcMeshComponent
 {
 	GENERATED_BODY()
 
+	UFUNCTION(BlueprintCallable, Category = "Vmpc|Interaction")
+		bool isInteractable() override { return true; };
+
 private:
 	UStaticMeshComponent * pivot;
 	int currentAngle = 0;

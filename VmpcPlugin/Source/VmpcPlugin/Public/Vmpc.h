@@ -13,7 +13,8 @@
 struct FUpdateTextureRegion2D;
 class ULcdComponent;
 class URotatingComponent;
-
+class UKnobComponent;
+class UVmpcMeshComponent;
 
 UCLASS()
 
@@ -32,16 +33,19 @@ public:
 
 public:
 	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
-		ULcdComponent* Display;
+		ULcdComponent* DisplayLcd;
 
 	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
 		URotatingComponent* DataWheelComponent;
 
 	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
-		URotatingComponent* RecGainComponent;
+		UKnobComponent* RecGainComponent;
 
 	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
-		URotatingComponent* VolumeComponent;
+		UKnobComponent* VolumeComponent;
+
+	UPROPERTY(VisibleAnywhere, meta = (AllowPrivateAccess = "true"))
+		UVmpcMeshComponent* BodyComponent;
 
 protected:
 	virtual void BeginPlay() override;
@@ -49,8 +53,8 @@ protected:
 
 private:
 	UVmpcAudioComponent* vmpcAudioComponent;
-	UStaticMeshComponent* addMesh(FString name);
-	URotatingComponent* addRotatable(FString name);
+	UVmpcMeshComponent* addMesh(FString name);
+	URotatingComponent* addRotatable(FString name, bool knob);
 	void addDisplay();
 
 public:	
@@ -75,5 +79,11 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Vmpc|Synth|Components|Audio")
 		void PadRelease(int pad);
+
+	UFUNCTION(BlueprintCallable, Category = "Vmpc|Synth|Components|Audio")
+		void SetRecGain(int value); // 0 - 100
+
+	UFUNCTION(BlueprintCallable, Category = "Vmpc|Synth|Components|Audio")
+		void SetVolume(int value); // 0 - 100
 
 };

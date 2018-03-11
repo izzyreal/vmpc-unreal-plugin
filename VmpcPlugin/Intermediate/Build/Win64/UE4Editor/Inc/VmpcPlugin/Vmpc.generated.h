@@ -13,7 +13,25 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define VMPCPLUGIN_Vmpc_generated_h
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_RPC_WRAPPERS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execSetVolume) \
+	{ \
+		P_GET_PROPERTY(UIntProperty,Z_Param_value); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->SetVolume(Z_Param_value); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execSetRecGain) \
+	{ \
+		P_GET_PROPERTY(UIntProperty,Z_Param_value); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->SetRecGain(Z_Param_value); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execPadRelease) \
 	{ \
@@ -61,7 +79,25 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_RPC_WRAPPERS_NO_PURE_DECLS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execSetVolume) \
+	{ \
+		P_GET_PROPERTY(UIntProperty,Z_Param_value); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->SetVolume(Z_Param_value); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execSetRecGain) \
+	{ \
+		P_GET_PROPERTY(UIntProperty,Z_Param_value); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->SetRecGain(Z_Param_value); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execPadRelease) \
 	{ \
@@ -109,7 +145,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_INCLASS_NO_PURE_DECLS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAVmpc(); \
 	friend VMPCPLUGIN_API class UClass* Z_Construct_UClass_AVmpc(); \
@@ -119,7 +155,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_INCLASS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_INCLASS \
 private: \
 	static void StaticRegisterNativesAVmpc(); \
 	friend VMPCPLUGIN_API class UClass* Z_Construct_UClass_AVmpc(); \
@@ -129,7 +165,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_STANDARD_CONSTRUCTORS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API AVmpc(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(AVmpc) \
@@ -142,7 +178,7 @@ private: \
 public:
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_ENHANCED_CONSTRUCTORS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API AVmpc(AVmpc&&); \
@@ -153,26 +189,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(AVmpc); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(AVmpc)
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_PRIVATE_PROPERTY_OFFSET
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_18_PROLOG
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_GENERATED_BODY_LEGACY \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_PRIVATE_PROPERTY_OFFSET
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_19_PROLOG
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_PRIVATE_PROPERTY_OFFSET \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_RPC_WRAPPERS \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_INCLASS \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_STANDARD_CONSTRUCTORS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_PRIVATE_PROPERTY_OFFSET \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_RPC_WRAPPERS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_INCLASS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_GENERATED_BODY \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_PRIVATE_PROPERTY_OFFSET \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_RPC_WRAPPERS_NO_PURE_DECLS \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_INCLASS_NO_PURE_DECLS \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_22_ENHANCED_CONSTRUCTORS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_PRIVATE_PROPERTY_OFFSET \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_RPC_WRAPPERS_NO_PURE_DECLS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_INCLASS_NO_PURE_DECLS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_Vmpc_h_23_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

@@ -16,8 +16,8 @@ void ULcdComponent::CreateTexture(bool argForceMake)
 	if (dtMaterialInstanceDynamic == nullptr || dtTexture == nullptr || argForceMake == true) {
 
 		dtBytesPerPixel = 4;
-		dtWidth = 248;
-		dtHeight = 60;
+		dtWidth = 360 * scale;
+		dtHeight = 360 * scale;
 
 		dtBufferSize = dtWidth * dtHeight * dtBytesPerPixel;
 		dtBufferSizeSqrt = dtWidth * dtBytesPerPixel;
@@ -27,11 +27,13 @@ void ULcdComponent::CreateTexture(bool argForceMake)
 
 		dtTexture = UTexture2D::CreateTransient(dtWidth, dtHeight);
 #if WITH_EDITORONLY_DATA
-		dtTexture->MipGenSettings = TextureMipGenSettings::TMGS_NoMipmaps;
+		//dtTexture->MipGenSettings = TextureMipGenSettings::TMGS_NoMipmaps;
+		dtTexture->MipGenSettings = TextureMipGenSettings::TMGS_FromTextureGroup;
 #endif
 		dtTexture->CompressionSettings = TextureCompressionSettings::TC_Default;
-		dtTexture->Filter = TextureFilter::TF_Nearest;
-		dtTexture->SRGB = 0;
+		//dtTexture->Filter = TextureFilter::TF_Nearest;
+		dtTexture->Filter = TextureFilter::TF_Bilinear;
+		dtTexture->SRGB = 1;
 		dtTexture->AddToRoot();
 		dtTexture->UpdateResource();
 		dtMaterialInstanceDynamic->SetTextureParameterValue(FName("DynamicTextureParam"), dtTexture);
@@ -44,17 +46,22 @@ void ULcdComponent::UpdateTexture()
 	if (!mpc.lock()) return;
 	auto ls = mpc.lock()->getLayeredScreen().lock();
 	if (!ls->IsDirty()) return;
+	MLOG("ls is dirty");
 	ls->Draw();
 	auto lcdPixels = ls->getPixels();
 
 	int pixelCount = dtBufferSize / dtBytesPerPixel;
-	auto da = ls->getDirtyArea();
-	da->L -= 1;
-	da->B += 1;
-	if (da->L < 0) da->L = 0;
-	if (da->R > 248) da->R = 248;
-	if (da->T < 0) da->T = 0;
-	if (da->B > 60) da->B = 60;
+	auto dirtyRect = ls->getDirtyArea();
+	dirtyRect->L -= 1;
+	dirtyRect->B += 1;
+	
+	if (dirtyRect->L < 0) dirtyRect->L = 0;
+	if (dirtyRect->R > 248) dirtyRect->R = 248;
+	if (dirtyRect->T < 0) dirtyRect->T = 0;
+	if (dirtyRect->B > 60) dirtyRect->B = 60;
+
+	int offsetL = 57 * scale;
+	int offsetT = 279 * scale;
 
 	for (int i = 0; i < pixelCount; i++) {
 
@@ -66,9 +73,9 @@ void ULcdComponent::UpdateTexture()
 		int iX = (int)((i % dtWidth));
 		int iY = (int)((i / dtWidth));
 
-		if (iX < da->L || iX > da->R || iY < da->T || iY > da->B) continue;
+		if ((iX - offsetL) < (dirtyRect->L * scale) || (iX - offsetL) > (dirtyRect->R * scale) || (iY - offsetT) < (dirtyRect->T * scale) || (iY - offsetT) > (dirtyRect->B * scale)) continue;
 
-		if (iX < 248 && iY < 60 && lcdPixels->at(iX).at(iY) == true) {
+		if ((iX - offsetL) >= 0 && (iX - offsetL) < (248 * scale) && (iY - offsetT) >= 0 && (iY - offsetT) < (60 * scale) && lcdPixels->at((iX - offsetL) / scale).at((iY - offsetT) / scale) == true) {
 			dtBuffer[iRed] = 86;
 			dtBuffer[iGreen] = 61;
 			dtBuffer[iBlue] = 145;
@@ -81,15 +88,16 @@ void ULcdComponent::UpdateTexture()
 			dtBuffer[iAlpha] = 255;
 		}
 	}
-	dtUpdateTextureRegion->SrcX = da->L;
-	dtUpdateTextureRegion->DestX = da->L;
-	dtUpdateTextureRegion->SrcY = da->T;
-	dtUpdateTextureRegion->DestY = da->T;
-	dtUpdateTextureRegion->Width = da->W();
-	dtUpdateTextureRegion->Height = da->H();
-	ls->getDirtyArea()->Clear();
+	dtUpdateTextureRegion->SrcX = (dirtyRect->L * scale) + offsetL;
+	dtUpdateTextureRegion->DestX = (dirtyRect->L * scale) + offsetL;
+	dtUpdateTextureRegion->SrcY = (dirtyRect->T * scale) + offsetT;
+	dtUpdateTextureRegion->DestY = (dirtyRect->T * scale) + offsetT;
+	dtUpdateTextureRegion->Width = dirtyRect->W() * scale;
+	dtUpdateTextureRegion->Height = dirtyRect->H() * scale;
+	//UpdateMips();
 	UpdateTextureRegions(dtTexture, 0, 1, dtUpdateTextureRegion, dtBufferSizeSqrt, (uint32)4, dtBuffer, false);
 	dtMaterialInstanceDynamic->SetTextureParameterValue("DynamicTextureParam", dtTexture);
+	ls->getDirtyArea()->Clear();
 }
 
 void ULcdComponent::UpdateTextureRegions(UTexture2D* Texture, int32 MipIndex, uint32 NumRegions, FUpdateTextureRegion2D* Regions, uint32 SrcPitch, uint32 SrcBpp, uint8* SrcData, bool bFreeData)
@@ -148,3 +156,108 @@ void ULcdComponent::UpdateTextureRegions(UTexture2D* Texture, int32 MipIndex, ui
 			});
 	}
 }
+
+void ULcdComponent::AllocateMips() {
+
+
+}
+
+/*
+void ULcdComponent::UpdateMips() {
+	auto *pNewTexture = dtTexture;
+
+	int mipsToAdd = 3;// pNewTexture->RequestedMips - 1;
+	//int mipsToAdd = pNewTexture->GetNumRequestedMips();
+	MLOG("mipsToAdd: " + std::to_string(mipsToAdd));
+	MLOG("GetNumMips: " + std::to_string(pNewTexture->GetNumMips()));
+	MLOG("GetNumMipsAllowed: " + std::to_string(pNewTexture->GetNumMipsAllowed(true)));
+	MLOG("GetNumResidentMips: " + std::to_string(pNewTexture->GetNumResidentMips()));
+
+					  //Declaring buffers here to reduce reallocs
+					  //We double buffer mips, using the prior buffer to build the next buffer
+	TArray<uint8> _mipRGBAs;
+	TArray<uint8> _mipRGBBs;
+
+	//Access source data
+	auto* priorData = (const uint8 *)pNewTexture->PlatformData->Mips[0].BulkData.Lock(LOCK_READ_WRITE);
+	int priorwidth = pNewTexture->PlatformData->Mips[0].SizeX;
+	int priorheight = pNewTexture->PlatformData->Mips[0].SizeY;
+
+	while (mipsToAdd > 0)
+	{
+		auto *mipRGBAs = mipsToAdd & 1 ? &_mipRGBAs : &_mipRGBBs;
+
+		int mipwidth = priorwidth >> 1;
+		int mipheight = priorheight >> 1;
+		MLOG("mipwidth " + to_string(mipwidth));
+		MLOG("mipheight " + to_string(mipheight));
+
+		if ((mipwidth == 0) || (mipheight == 0))
+		{
+			break;
+		}
+
+		mipRGBAs->Reset();
+		mipRGBAs->AddUninitialized(mipwidth * mipheight * dtBytesPerPixel);
+
+		int dataPerRow = priorwidth * dtBytesPerPixel;
+
+		//Average out the values
+		auto *dataOut = mipRGBAs->GetData();
+		for (int y = 0; y < mipheight; y++)
+		{
+			auto *dataInRow0 = priorData + (dataPerRow * y * 2);
+			auto *dataInRow1 = dataInRow0 + dataPerRow;
+			for (int x = 0; x < mipwidth; x++)
+			{
+				int totalB = *dataInRow0++;
+				int totalG = *dataInRow0++;
+				int totalR = *dataInRow0++;
+				int totalA = *dataInRow0++;
+				totalB += *dataInRow0++;
+				totalG += *dataInRow0++;
+				totalR += *dataInRow0++;
+				totalA += *dataInRow0++;
+
+				totalB += *dataInRow1++;
+				totalG += *dataInRow1++;
+				totalR += *dataInRow1++;
+				totalA += *dataInRow1++;
+				totalB += *dataInRow1++;
+				totalG += *dataInRow1++;
+				totalR += *dataInRow1++;
+				totalA += *dataInRow1++;
+
+				totalB >>= 2;
+				totalG >>= 2;
+				totalR >>= 2;
+				totalA >>= 2;
+
+				*dataOut++ = (uint8)totalB;
+				*dataOut++ = (uint8)totalG;
+				*dataOut++ = (uint8)totalR;
+				*dataOut++ = (uint8)totalA;
+			}
+			dataInRow0 += priorwidth * 2;
+			dataInRow1 += priorwidth * 2;
+		}
+
+		// Allocate next mipmap.
+		FTexture2DMipMap* Mip = new(pNewTexture->PlatformData->Mips) FTexture2DMipMap();
+		Mip->SizeX = mipwidth;
+		Mip->SizeY = mipheight;
+		Mip->BulkData.Lock(LOCK_READ_WRITE);
+		void* mipData = Mip->BulkData.Realloc(mipRGBAs->Num());
+		FMemory::Memcpy(mipData, mipRGBAs->GetData(), mipRGBAs->Num());
+		Mip->BulkData.Unlock();
+
+		priorData = mipRGBAs->GetData();
+		priorwidth = mipwidth;
+		priorheight = mipheight;
+		--mipsToAdd;
+	}
+
+	pNewTexture->PlatformData->Mips[0].BulkData.Unlock();
+	pNewTexture->UpdateResource();
+}
+*/
