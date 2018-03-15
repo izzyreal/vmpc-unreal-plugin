@@ -8,13 +8,16 @@
 
 #include "Logger.hpp"
 
-void AKeyboardController::setupInput() {
+void AKeyboardController::BeginPlay() {
+	bShowMouseCursor = true;
+	bEnableClickEvents = true;
 }
 
 bool AKeyboardController::InputKey(FKey Key, EInputEvent EventType, float AmountDepressed, bool bGamepad) {
 
 	TArray<AActor*> foundVmpcs;
 	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AVmpc::StaticClass(), foundVmpcs);
+	if (foundVmpcs.Num() < 1) return false;
 	// For now assume there's only 1 vmpc in the world.
 	auto v = foundVmpcs[0];
 	auto vmpc = Cast<AVmpc>(v);
@@ -78,12 +81,52 @@ bool AKeyboardController::InputKey(FKey Key, EInputEvent EventType, float Amount
 
 	// add open window & main screen. can I replace ESC == 'return to editor' with something else?
 
+	/*
+	* Misc section
+	*/
+	if (Key == EKeys::Escape) {
+		button = "mainscreen";
+	}
+	else if (Key == EKeys::I) {
+		button = "openwindow";
+	}
+	else if (Key == EKeys::Q) {
+		button = "prevstepevent";
+	}
+	else if (Key == EKeys::W) {
+		button = "nextstepevent";
+	}
+	else if (Key == EKeys::E) {
+		button = "goto";
+	}
+	else if (Key == EKeys::R) {
+		button = "prevbarstart";
+	}
+	else if (Key == EKeys::T) {
+		button = "nextbarend";
+	}
+	else if (Key == EKeys::Y) {
+		button = "tap";
+	}
+	else if (Key == EKeys::O) {
+		button = "fulllevel";
+	}
+	else if (Key == EKeys::P) {
+		button = "sixteenlevels";
+	}
+	else if (Key == EKeys::LeftBracket) {
+		button = "nextseq";
+	}
+	else if (Key == EKeys::RightBracket) {
+		button = "trackmute";
+	}
+
 
 	/*
 	* 'Push' section
 	*/
 
-	if (EventType == EInputEvent::IE_Pressed) {
+	if (EventType == EInputEvent::IE_Pressed || EventType == EInputEvent::IE_Repeat) {
 		int increment = 1;
 		auto controls = vmpc->mpcInst->getControls().lock();
 		if (controls->isShiftPressed()) increment *= 10;

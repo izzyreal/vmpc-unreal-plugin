@@ -48,14 +48,15 @@ public:
 		UVmpcMeshComponent* BodyComponent;
 
 protected:
-	virtual void BeginPlay() override;
-	virtual void PostInitializeComponents() override;
+	void BeginPlay() override;
+	void PostInitializeComponents() override;
 
 private:
 	UVmpcAudioComponent* vmpcAudioComponent;
 	UVmpcMeshComponent* addMesh(FString name);
 	URotatingComponent* addRotatable(FString name, bool knob);
 	void addDisplay();
+	bool IsWorldValid();
 
 public:	
 	virtual void OnConstruction(const FTransform& Transform) override;

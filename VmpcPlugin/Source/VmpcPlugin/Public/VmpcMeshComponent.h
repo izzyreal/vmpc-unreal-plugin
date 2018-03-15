@@ -15,6 +15,7 @@ class VMPCPLUGIN_API UVmpcMeshComponent : public UStaticMeshComponent
 {
 	GENERATED_BODY()
 
+public:
 	UFUNCTION(BlueprintCallable, Category = "Vmpc|Interaction")
 		void triggerPush();
 
@@ -26,6 +27,12 @@ class VMPCPLUGIN_API UVmpcMeshComponent : public UStaticMeshComponent
 
 	UFUNCTION(BlueprintCallable, Category = "Vmpc|Interaction")
 		virtual bool isInteractable();
+
+	UFUNCTION(BlueprintCallable, Category = "Vmpc|Interaction")
+		void onMouseDown(UPrimitiveComponent* ClickedComp, FKey ButtonPressed);
+
+	UFUNCTION(BlueprintCallable, Category = "Vmpc|Interaction")
+		void onMouseUp(UPrimitiveComponent* ClickedComp, FKey ButtonPressed);
 
 public:
 	void setMpc(AVmpc* vmpc);

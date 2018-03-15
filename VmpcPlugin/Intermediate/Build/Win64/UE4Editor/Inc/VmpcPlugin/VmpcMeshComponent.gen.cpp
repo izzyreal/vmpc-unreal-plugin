@@ -19,6 +19,10 @@ void EmptyLinkFunctionForGeneratedCodeVmpcMeshComponent() {}
 	UPackage* Z_Construct_UPackage__Script_VmpcPlugin();
 	VMPCPLUGIN_API UFunction* Z_Construct_UFunction_UVmpcMeshComponent_EnableOutline();
 	VMPCPLUGIN_API UFunction* Z_Construct_UFunction_UVmpcMeshComponent_isInteractable();
+	VMPCPLUGIN_API UFunction* Z_Construct_UFunction_UVmpcMeshComponent_onMouseDown();
+	INPUTCORE_API UScriptStruct* Z_Construct_UScriptStruct_FKey();
+	ENGINE_API UClass* Z_Construct_UClass_UPrimitiveComponent_NoRegister();
+	VMPCPLUGIN_API UFunction* Z_Construct_UFunction_UVmpcMeshComponent_onMouseUp();
 	VMPCPLUGIN_API UFunction* Z_Construct_UFunction_UVmpcMeshComponent_triggerPush();
 	VMPCPLUGIN_API UFunction* Z_Construct_UFunction_UVmpcMeshComponent_triggerRelease();
 // End Cross Module References
@@ -28,6 +32,8 @@ void EmptyLinkFunctionForGeneratedCodeVmpcMeshComponent() {}
 		static const FNameNativePtrPair Funcs[] = {
 			{ "EnableOutline", (Native)&UVmpcMeshComponent::execEnableOutline },
 			{ "isInteractable", (Native)&UVmpcMeshComponent::execisInteractable },
+			{ "onMouseDown", (Native)&UVmpcMeshComponent::execonMouseDown },
+			{ "onMouseUp", (Native)&UVmpcMeshComponent::execonMouseUp },
 			{ "triggerPush", (Native)&UVmpcMeshComponent::exectriggerPush },
 			{ "triggerRelease", (Native)&UVmpcMeshComponent::exectriggerRelease },
 		};
@@ -53,7 +59,7 @@ void EmptyLinkFunctionForGeneratedCodeVmpcMeshComponent() {}
 				{ "ModuleRelativePath", "Public/VmpcMeshComponent.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_UVmpcMeshComponent, "EnableOutline", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04040401, sizeof(VmpcMeshComponent_eventEnableOutline_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_UVmpcMeshComponent, "EnableOutline", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(VmpcMeshComponent_eventEnableOutline_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
 		}
 		return ReturnFunction;
@@ -78,7 +84,71 @@ void EmptyLinkFunctionForGeneratedCodeVmpcMeshComponent() {}
 				{ "ModuleRelativePath", "Public/VmpcMeshComponent.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_UVmpcMeshComponent, "isInteractable", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04040401, sizeof(VmpcMeshComponent_eventisInteractable_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_UVmpcMeshComponent, "isInteractable", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020400, sizeof(VmpcMeshComponent_eventisInteractable_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_UVmpcMeshComponent_onMouseDown()
+	{
+		struct VmpcMeshComponent_eventonMouseDown_Parms
+		{
+			UPrimitiveComponent* ClickedComp;
+			FKey ButtonPressed;
+		};
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			static const UE4CodeGen_Private::FStructPropertyParams NewProp_ButtonPressed = { UE4CodeGen_Private::EPropertyClass::Struct, "ButtonPressed", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000080, 1, nullptr, STRUCT_OFFSET(VmpcMeshComponent_eventonMouseDown_Parms, ButtonPressed), Z_Construct_UScriptStruct_FKey, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ClickedComp_MetaData[] = {
+				{ "EditInline", "true" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ClickedComp = { UE4CodeGen_Private::EPropertyClass::Object, "ClickedComp", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000080080, 1, nullptr, STRUCT_OFFSET(VmpcMeshComponent_eventonMouseDown_Parms, ClickedComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(NewProp_ClickedComp_MetaData, ARRAY_COUNT(NewProp_ClickedComp_MetaData)) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ButtonPressed,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ClickedComp,
+			};
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "Category", "Vmpc|Interaction" },
+				{ "ModuleRelativePath", "Public/VmpcMeshComponent.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_UVmpcMeshComponent, "onMouseDown", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(VmpcMeshComponent_eventonMouseDown_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
+		}
+		return ReturnFunction;
+	}
+	UFunction* Z_Construct_UFunction_UVmpcMeshComponent_onMouseUp()
+	{
+		struct VmpcMeshComponent_eventonMouseUp_Parms
+		{
+			UPrimitiveComponent* ClickedComp;
+			FKey ButtonPressed;
+		};
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			static const UE4CodeGen_Private::FStructPropertyParams NewProp_ButtonPressed = { UE4CodeGen_Private::EPropertyClass::Struct, "ButtonPressed", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000080, 1, nullptr, STRUCT_OFFSET(VmpcMeshComponent_eventonMouseUp_Parms, ButtonPressed), Z_Construct_UScriptStruct_FKey, METADATA_PARAMS(nullptr, 0) };
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ClickedComp_MetaData[] = {
+				{ "EditInline", "true" },
+			};
+#endif
+			static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ClickedComp = { UE4CodeGen_Private::EPropertyClass::Object, "ClickedComp", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000080080, 1, nullptr, STRUCT_OFFSET(VmpcMeshComponent_eventonMouseUp_Parms, ClickedComp), Z_Construct_UClass_UPrimitiveComponent_NoRegister, METADATA_PARAMS(NewProp_ClickedComp_MetaData, ARRAY_COUNT(NewProp_ClickedComp_MetaData)) };
+			static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[] = {
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ButtonPressed,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_ClickedComp,
+			};
+#if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+				{ "Category", "Vmpc|Interaction" },
+				{ "ModuleRelativePath", "Public/VmpcMeshComponent.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_UVmpcMeshComponent, "onMouseUp", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, sizeof(VmpcMeshComponent_eventonMouseUp_Parms), PropPointers, ARRAY_COUNT(PropPointers), 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
 		}
 		return ReturnFunction;
@@ -94,7 +164,7 @@ void EmptyLinkFunctionForGeneratedCodeVmpcMeshComponent() {}
 				{ "ModuleRelativePath", "Public/VmpcMeshComponent.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_UVmpcMeshComponent, "triggerPush", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04040401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_UVmpcMeshComponent, "triggerPush", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
 		}
 		return ReturnFunction;
@@ -110,7 +180,7 @@ void EmptyLinkFunctionForGeneratedCodeVmpcMeshComponent() {}
 				{ "ModuleRelativePath", "Public/VmpcMeshComponent.h" },
 			};
 #endif
-			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_UVmpcMeshComponent, "triggerRelease", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04040401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
+			static const UE4CodeGen_Private::FFunctionParams FuncParams = { (UObject*(*)())Z_Construct_UClass_UVmpcMeshComponent, "triggerRelease", RF_Public|RF_Transient|RF_MarkAsNative, nullptr, (EFunctionFlags)0x04020401, 0, nullptr, 0, 0, 0, METADATA_PARAMS(Function_MetaDataParams, ARRAY_COUNT(Function_MetaDataParams)) };
 			UE4CodeGen_Private::ConstructUFunction(ReturnFunction, FuncParams);
 		}
 		return ReturnFunction;
@@ -129,10 +199,12 @@ void EmptyLinkFunctionForGeneratedCodeVmpcMeshComponent() {}
 				(UObject* (*)())Z_Construct_UPackage__Script_VmpcPlugin,
 			};
 			static const FClassFunctionLinkInfo FuncInfo[] = {
-				{ &Z_Construct_UFunction_UVmpcMeshComponent_EnableOutline, "EnableOutline" }, // 1980323746
-				{ &Z_Construct_UFunction_UVmpcMeshComponent_isInteractable, "isInteractable" }, // 4127706571
-				{ &Z_Construct_UFunction_UVmpcMeshComponent_triggerPush, "triggerPush" }, // 1427961789
-				{ &Z_Construct_UFunction_UVmpcMeshComponent_triggerRelease, "triggerRelease" }, // 3083599670
+				{ &Z_Construct_UFunction_UVmpcMeshComponent_EnableOutline, "EnableOutline" }, // 1894220993
+				{ &Z_Construct_UFunction_UVmpcMeshComponent_isInteractable, "isInteractable" }, // 3314489383
+				{ &Z_Construct_UFunction_UVmpcMeshComponent_onMouseDown, "onMouseDown" }, // 129867119
+				{ &Z_Construct_UFunction_UVmpcMeshComponent_onMouseUp, "onMouseUp" }, // 3758034687
+				{ &Z_Construct_UFunction_UVmpcMeshComponent_triggerPush, "triggerPush" }, // 3422104357
+				{ &Z_Construct_UFunction_UVmpcMeshComponent_triggerRelease, "triggerRelease" }, // 690889646
 			};
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
@@ -159,7 +231,7 @@ void EmptyLinkFunctionForGeneratedCodeVmpcMeshComponent() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UVmpcMeshComponent, 2957772212);
+	IMPLEMENT_CLASS(UVmpcMeshComponent, 2952181600);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_UVmpcMeshComponent(Z_Construct_UClass_UVmpcMeshComponent, &UVmpcMeshComponent::StaticClass, TEXT("/Script/VmpcPlugin"), TEXT("UVmpcMeshComponent"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UVmpcMeshComponent);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

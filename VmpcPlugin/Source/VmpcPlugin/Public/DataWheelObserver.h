@@ -4,7 +4,9 @@
 
 class URotatingComponent;
 
-class DataWheelObserver : public moduru::observer::Observer {
+class DataWheelObserver 
+	: public moduru::observer::Observer
+{
 
 private:
 	URotatingComponent* DataWheel;

@@ -14,9 +14,9 @@ class VMPCPLUGIN_API AKeyboardController : public APlayerController
 {
 	GENERATED_BODY()
 	
-public:
-	void setupInput();
-	
+protected:
+	void BeginPlay() override;
+
 public:
 	bool InputKey(FKey Key, EInputEvent EventType, float AmountDepressed, bool bGamepad) override;
 

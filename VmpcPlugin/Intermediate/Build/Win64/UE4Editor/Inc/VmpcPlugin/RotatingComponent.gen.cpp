@@ -93,7 +93,7 @@ void EmptyLinkFunctionForGeneratedCodeRotatingComponent() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(URotatingComponent, 1596376360);
+	IMPLEMENT_CLASS(URotatingComponent, 986528457);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_URotatingComponent(Z_Construct_UClass_URotatingComponent, &URotatingComponent::StaticClass, TEXT("/Script/VmpcPlugin"), TEXT("URotatingComponent"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(URotatingComponent);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

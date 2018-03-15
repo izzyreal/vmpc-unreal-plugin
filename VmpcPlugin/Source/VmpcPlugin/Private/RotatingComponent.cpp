@@ -1,7 +1,5 @@
 #include "RotatingComponent.h"
 
-#include "Logger.hpp"
-
 #include "Runtime/Engine/Classes/PhysicsEngine/BodySetup.h"
 #include "Kismet/KismetMathLibrary.h"
 
@@ -39,7 +37,20 @@ void URotatingComponent::BeginPlay()
 }
 
 void URotatingComponent::rotate(int degrees) {
-	int newAngle = currentAngle + degrees;
+	degreesToRotate += degrees;
+}
+
+void URotatingComponent::checkRotation() {
+	if (degreesToRotate > 0) {
+		rotateOneDegree(true);
+	}
+	else if (degreesToRotate < 0) {
+		rotateOneDegree(false);
+	}
+}
+
+void URotatingComponent::rotateOneDegree(bool up) {
+	int newAngle = currentAngle + (up ? 1 : -1);
 	if (newAngle > 359) newAngle -= 360;
 	if (newAngle < 0) newAngle += 360;
 	auto actor = GetAttachmentRootActor();
@@ -52,6 +63,7 @@ void URotatingComponent::rotate(int degrees) {
 	actor->SetActorRotation(actorRotation);
 
 	currentAngle = newAngle;
+	degreesToRotate += (up ? -1 : 1);
 }
 
 void URotatingComponent::rotateAroundPoint(UStaticMeshComponent* comp, float angle, FVector pointToRotAround, FVector axisToRotAround, bool store) {
@@ -67,4 +79,7 @@ void URotatingComponent::rotateAroundPoint(UStaticMeshComponent* comp, float ang
 		newLocations.push_back(newLoc);
 		newRotations.push_back(newRot);
 	}
+}
+
+URotatingComponent::~URotatingComponent() {
 }

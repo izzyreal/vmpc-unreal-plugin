@@ -26,12 +26,11 @@ void ULcdComponent::CreateTexture(bool argForceMake)
 		dtMaterialInstanceDynamic = CreateAndSetMaterialInstanceDynamic(0);
 
 		dtTexture = UTexture2D::CreateTransient(dtWidth, dtHeight);
-#if WITH_EDITORONLY_DATA
+//#if WITH_EDITORONLY_DATA
 		//dtTexture->MipGenSettings = TextureMipGenSettings::TMGS_NoMipmaps;
-		dtTexture->MipGenSettings = TextureMipGenSettings::TMGS_FromTextureGroup;
-#endif
+//#endif
+
 		dtTexture->CompressionSettings = TextureCompressionSettings::TC_Default;
-		//dtTexture->Filter = TextureFilter::TF_Nearest;
 		dtTexture->Filter = TextureFilter::TF_Bilinear;
 		dtTexture->SRGB = 1;
 		dtTexture->AddToRoot();

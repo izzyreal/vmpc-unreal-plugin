@@ -13,9 +13,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define VMPCPLUGIN_NonVRPawn_generated_h
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_RPC_WRAPPERS
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_RPC_WRAPPERS_NO_PURE_DECLS
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_INCLASS_NO_PURE_DECLS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_RPC_WRAPPERS
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_RPC_WRAPPERS_NO_PURE_DECLS
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesANonVRPawn(); \
 	friend VMPCPLUGIN_API class UClass* Z_Construct_UClass_ANonVRPawn(); \
@@ -25,7 +25,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_INCLASS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_INCLASS \
 private: \
 	static void StaticRegisterNativesANonVRPawn(); \
 	friend VMPCPLUGIN_API class UClass* Z_Construct_UClass_ANonVRPawn(); \
@@ -35,7 +35,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_STANDARD_CONSTRUCTORS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API ANonVRPawn(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ANonVRPawn) \
@@ -48,7 +48,7 @@ private: \
 public:
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_ENHANCED_CONSTRUCTORS \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API ANonVRPawn(ANonVRPawn&&); \
@@ -59,26 +59,26 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ANonVRPawn); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(ANonVRPawn)
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_PRIVATE_PROPERTY_OFFSET
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_9_PROLOG
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_GENERATED_BODY_LEGACY \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_PRIVATE_PROPERTY_OFFSET
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_11_PROLOG
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_PRIVATE_PROPERTY_OFFSET \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_RPC_WRAPPERS \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_INCLASS \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_STANDARD_CONSTRUCTORS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_PRIVATE_PROPERTY_OFFSET \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_RPC_WRAPPERS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_INCLASS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_GENERATED_BODY \
+#define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_PRIVATE_PROPERTY_OFFSET \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_INCLASS_NO_PURE_DECLS \
-	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_12_ENHANCED_CONSTRUCTORS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_PRIVATE_PROPERTY_OFFSET \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_INCLASS_NO_PURE_DECLS \
+	vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_NonVRPawn_h_14_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

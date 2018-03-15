@@ -5,11 +5,13 @@
 #include "CoreMinimal.h"
 #include "Components/StaticMeshComponent.h"
 #include "VmpcMeshComponent.h"
+
 #include "RotatingComponent.generated.h"
 
 /**
  * 
  */
+
 UCLASS()
 class VMPCPLUGIN_API URotatingComponent : public UVmpcMeshComponent
 {
@@ -25,7 +27,9 @@ private:
 public:
 	void setPivot(UStaticMeshComponent* pivot);
 	void rotate(int degrees);
-	
+	int degreesToRotate = 0;
+	void checkRotation();
+
 private:
 	std::vector<FVector> newLocations;
 	std::vector<FRotator> newRotations;
@@ -35,4 +39,8 @@ protected:
 
 private:
 	void rotateAroundPoint(UStaticMeshComponent* comp, float angle, FVector pointToRotAround, FVector axisToRotAround, bool store);
+	void rotateOneDegree(bool up);
+
+public:
+	~URotatingComponent();
 };

@@ -6,6 +6,8 @@
 #include "GameFramework/DefaultPawn.h"
 #include "NonVRPawn.generated.h"
 
+class UVmpcMeshComponent;
+
 UCLASS()
 class VMPCPLUGIN_API ANonVRPawn : public ADefaultPawn
 {
@@ -26,6 +28,8 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	
+private:
+	UVmpcMeshComponent* currentHighlightedComponent = nullptr;
+	float maxTraceDist = 5000.0f;
 	
 };

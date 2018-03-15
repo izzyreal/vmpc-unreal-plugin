@@ -8,12 +8,34 @@
 #include "ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UPrimitiveComponent;
+struct FKey;
 #ifdef VMPCPLUGIN_VmpcMeshComponent_generated_h
 #error "VmpcMeshComponent.generated.h already included, missing '#pragma once' in VmpcMeshComponent.h"
 #endif
 #define VMPCPLUGIN_VmpcMeshComponent_generated_h
 
 #define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_VmpcMeshComponent_h_16_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execonMouseUp) \
+	{ \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_ClickedComp); \
+		P_GET_STRUCT(FKey,Z_Param_ButtonPressed); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->onMouseUp(Z_Param_ClickedComp,Z_Param_ButtonPressed); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execonMouseDown) \
+	{ \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_ClickedComp); \
+		P_GET_STRUCT(FKey,Z_Param_ButtonPressed); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->onMouseDown(Z_Param_ClickedComp,Z_Param_ButtonPressed); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execisInteractable) \
 	{ \
@@ -50,6 +72,26 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 
 #define vrmpc_Plugins_VmpcPlugin_Source_VmpcPlugin_Public_VmpcMeshComponent_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execonMouseUp) \
+	{ \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_ClickedComp); \
+		P_GET_STRUCT(FKey,Z_Param_ButtonPressed); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->onMouseUp(Z_Param_ClickedComp,Z_Param_ButtonPressed); \
+		P_NATIVE_END; \
+	} \
+ \
+	DECLARE_FUNCTION(execonMouseDown) \
+	{ \
+		P_GET_OBJECT(UPrimitiveComponent,Z_Param_ClickedComp); \
+		P_GET_STRUCT(FKey,Z_Param_ButtonPressed); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		this->onMouseDown(Z_Param_ClickedComp,Z_Param_ButtonPressed); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execisInteractable) \
 	{ \

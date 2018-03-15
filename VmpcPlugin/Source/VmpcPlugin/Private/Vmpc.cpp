@@ -41,9 +41,9 @@ AVmpc::AVmpc()
 	}
 	vmpcAudioComponent = CreateDefaultSubobject<UVmpcAudioComponent>("VmpcAudioComponent");
 	vmpcAudioComponent->setMpc(mpcInst);
-	vmpcAudioComponent->RegisterComponent();
 	vmpcAudioComponent->SetupAttachment(RootComponent);
-
+	if (IsWorldValid())	vmpcAudioComponent->RegisterComponent();
+	
 	DataWheelComponent = addRotatable("DataWheel", false);
 	dataWheelObserver = std::make_shared<DataWheelObserver>(DataWheelComponent);
 	mpcInst->getHardware().lock()->getDataWheel().lock()->addObserver(dataWheelObserver.get());
@@ -69,6 +69,7 @@ AVmpc::AVmpc()
 		auto mesh = addMesh(s);
 		if (mesh->GetStaticMesh()->IsValidLowLevel()) {
 			mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			mesh->setPushable(false);
 		}
 	}
 
@@ -79,9 +80,20 @@ AVmpc::AVmpc()
 			mesh->SetRenderInMainPass(false);
 			mesh->GetBodySetup()->CollisionTraceFlag = ECollisionTraceFlag::CTF_UseComplexAsSimple;
 			mesh->SetCastShadow(false);
+			mesh->setPushable(true);
 		}
 	}
 	addMesh("Slider");
+}
+
+bool AVmpc::IsWorldValid() {
+	AActor* MyOwner = GetOwner();
+	UWorld* MyOwnerWorld = (MyOwner ? MyOwner->GetWorld() : nullptr);
+
+	if (MyOwnerWorld != nullptr && MyOwnerWorld->IsValidLowLevel()) {
+		return true;
+	}
+	return false;
 }
 
 void AVmpc::addDisplay() {
@@ -94,7 +106,7 @@ void AVmpc::addDisplay() {
 	ConstructorHelpers::FObjectFinder<UStaticMesh> StaticMesh(*fullName);
 	if (!StaticMesh.Succeeded()) return;
 	DisplayLcd->SetStaticMesh(StaticMesh.Object);
-	DisplayLcd->RegisterComponent();
+	if (IsWorldValid()) DisplayLcd->RegisterComponent();
 	DisplayLcd->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
@@ -108,7 +120,7 @@ UVmpcMeshComponent* AVmpc::addMesh(FString name) {
 	MeshComponent->SetupAttachment(RootComponent);
 	MeshComponent->SetStaticMesh(StaticMesh.Object);
 	MeshComponent->setMpc(this);
-	MeshComponent->RegisterComponent();
+	if (IsWorldValid()) MeshComponent->RegisterComponent();
 	MeshComponent->bOverrideLightMapRes = true;
 	MeshComponent->OverriddenLightMapRes = 512;
 	if (name.Equals("Body")) BodyComponent = MeshComponent;
@@ -133,7 +145,7 @@ URotatingComponent* AVmpc::addRotatable(FString name, bool knob) {
 	rotatableComponent->SetStaticMesh(StaticMesh.Object);
 	rotatableComponent->setMpc(this);
 	rotatableComponent->SetMobility(EComponentMobility::Movable);
-	rotatableComponent->RegisterComponent();
+	if (IsWorldValid())	rotatableComponent->RegisterComponent();
 	auto pivot = addMesh("Pivot" + name);
 	pivot->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	pivot->SetRenderInMainPass(false);
@@ -183,9 +195,9 @@ void AVmpc::Tick(float DeltaTime)
 	if (DisplayLcd->IsValidLowLevelFast()) {
 		DisplayLcd->UpdateTexture();
 	}
-	//DataWheelComponent->rotate(2);
-	//RecGainComponent->rotate(2);
-	//VolumeComponent->rotate(2);
+	DataWheelComponent->checkRotation();
+	RecGainComponent->checkRotation();
+	VolumeComponent->checkRotation();
 }
 
 void AVmpc::DataWheelTurn(int increment) {

@@ -92,7 +92,7 @@ void EmptyLinkFunctionForGeneratedCodeKnobComponent() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UKnobComponent, 2833801902);
+	IMPLEMENT_CLASS(UKnobComponent, 2054298235);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_UKnobComponent(Z_Construct_UClass_UKnobComponent, &UKnobComponent::StaticClass, TEXT("/Script/VmpcPlugin"), TEXT("UKnobComponent"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UKnobComponent);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

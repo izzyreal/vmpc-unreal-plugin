@@ -6,7 +6,21 @@
 #include <hardware/Button.hpp>
 
 void UVmpcMeshComponent::setMpc(AVmpc* vmpc) {
-	this->vmpc = vmpc;
+	this->vmpc = vmpc;	
+	OnClicked.AddDynamic(this, &UVmpcMeshComponent::onMouseDown);
+	OnReleased.AddDynamic(this, &UVmpcMeshComponent::onMouseUp);
+}
+
+void UVmpcMeshComponent::onMouseDown(UPrimitiveComponent* ClickedComp, FKey ButtonPressed) {
+	std::string name = std::string(TCHAR_TO_UTF8(*GetName()));
+	MLOG("Click received for component " + name);
+	triggerPush();
+}
+
+void UVmpcMeshComponent::onMouseUp(UPrimitiveComponent* ClickedComp, FKey ButtonPressed) {
+	std::string name = std::string(TCHAR_TO_UTF8(*GetName()));
+	MLOG("Release received for component " + name);
+	triggerRelease();
 }
 
 int UVmpcMeshComponent::getPadNr(std::string name) {
@@ -62,7 +76,6 @@ void UVmpcMeshComponent::triggerRelease() {
 }
 
 void UVmpcMeshComponent::EnableOutline(bool b) {
-	MLOG("Enable outline called");
 	SetRenderCustomDepth(b);
 }
 
